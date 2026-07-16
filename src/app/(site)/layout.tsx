@@ -1,5 +1,7 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 export default function SiteLayout({
   children,
@@ -11,6 +13,8 @@ export default function SiteLayout({
       <Header />
       <div className="flex-1">{children}</div>
       <Footer />
+      <ScrollToTopButton />
+      <WhatsAppButton />
     </div>
   );
 }

@@ -9,12 +9,14 @@ export type ServiceItem = {
 
 export const SERVICES: ServiceItem[] = [
   {
-    title: "Event Management",
-    slug: "event-management",
-    href: "/services/event-management",
+    title: "Exhibition Stand",
+    slug: "exhibition-stand",
+    href: "/services/exhibition-stand",
     description:
-      "End-to-end corporate and branded event management across Dubai & the GCC.",
+      "Custom exhibition stand design, build, and installation across the UAE.",
+    externalUrl: "https://exhibitionstandsuae.ae/",
   },
+  
   {
     title: "Corporate Gifts",
     slug: "corporate-gifts",
@@ -24,13 +26,6 @@ export const SERVICES: ServiceItem[] = [
     externalUrl: "https://corporategiftsdubaii.ae/",
   },
   {
-    title: "Printing Services",
-    slug: "printing",
-    href: "/services/printing",
-    description:
-      "High-quality commercial and promotional printing with in-house production.",
-  },
-  {
     title: "Creative Agency",
     slug: "creative-agency",
     href: "/services/creative-agency",
@@ -38,6 +33,14 @@ export const SERVICES: ServiceItem[] = [
       "Website development, UI/UX, kiosk games, and digital solutions through Code Cobble.",
     externalUrl: "https://codecobble.com/",
   },
+  {
+    title: "Printing Services",
+    slug: "printing",
+    href: "/services/printing",
+    description:
+      "High-quality commercial and promotional printing with in-house production.",
+  },
+  
   {
     title: "Rider Equipment",
     slug: "rider-equipment",
@@ -53,13 +56,13 @@ export const SERVICES: ServiceItem[] = [
       "Custom acrylic displays, signage, and fabrication crafted to specification.",
   },
   {
-    title: "Exhibition Stand",
-    slug: "exhibition-stand",
-    href: "/services/exhibition-stand",
+    title: "Event Management",
+    slug: "event-management",
+    href: "/services/event-management",
     description:
-      "Custom exhibition stand design, build, and installation across the UAE.",
-    externalUrl: "https://exhibitionstandsuae.ae/",
+      "End-to-end corporate and branded event management across Dubai & the GCC.",
   },
+  
 ];
 
 export function getServiceBySlug(slug: string) {
@@ -87,4 +90,7 @@ export const SITE = {
   phone: "+971 52 624 0517",
   address: "Sheikh Zayed Road – Dubai",
   url: "https://baharnani.com",
+  googleRating: 4.9,
+  googleMapsUrl:
+    "https://www.google.com/maps/place/?q=place_id:ChIJO7SOrsRpXz4RIm-KxaoNZzQ",
 } as const;

@@ -69,8 +69,26 @@ const PATHWAYS = [
 export default function HomeWhyBaharnani() {
   return (
     <section className="w-full bg-canvas">
-      <RevealSection className="mx-auto max-w-7xl border-x border-hairline px-5 py-12 sm:px-6 md:px-8 md:py-16">
-        <Reveal animationNum={0} className="mx-auto max-w-2xl text-center">
+      <RevealSection className="relative mx-auto max-w-7xl overflow-hidden border-x border-hairline px-5 py-12 sm:px-6 md:px-8 md:py-6">
+        <div
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            WebkitMaskImage:
+              "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, black 70%)",
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--primary) 35%, transparent) 1px, transparent 0)",
+            backgroundSize: "20px 20px",
+            maskImage:
+              "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, black 70%)",
+            opacity: 0.5,
+          }}
+          aria-hidden
+        />
+
+        <Reveal
+          animationNum={0}
+          className="relative z-10 mx-auto max-w-2xl text-center"
+        >
           <SectionEyebrow icon={Sparkles}>Why Baharnani</SectionEyebrow>
           <h2 className="mt-5 text-pretty text-display-sm text-ink md:text-display-md">
             Strategy and production under one roof.
@@ -84,7 +102,7 @@ export default function HomeWhyBaharnani() {
 
         <Reveal
           animationNum={1}
-          className="mx-auto mt-10 grid max-w-5xl gap-4 sm:grid-cols-3"
+          className="relative z-10 mx-auto mt-10 grid max-w-5xl gap-4 sm:grid-cols-3"
         >
           {PATHWAYS.map((item) => (
             <motion.div
@@ -120,7 +138,7 @@ export default function HomeWhyBaharnani() {
 
         <Reveal
           animationNum={2}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          className="relative z-10 mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <Link
             href="/contact"

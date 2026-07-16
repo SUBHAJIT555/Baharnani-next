@@ -19,11 +19,11 @@ export default function HomePage() {
 
       <SectionDivider />
 
-      <HomeWhyBaharnani />
+      <HomeServices />
 
       <SectionDivider />
 
-      <HomeServices />
+      <HomeWhyBaharnani />
     </main>
   );
 }

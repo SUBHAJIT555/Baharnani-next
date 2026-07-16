@@ -13,6 +13,8 @@ import {
   ExternalSiteNoticeModal,
 } from "@/components/ui/ExternalSiteNoticeModal";
 import PastelIconBox from "@/components/ui/PastelIconBox";
+import GoogleRatingBadge from "@/components/ui/GoogleRatingBadge";
+import { ShimmeringText } from "@/components/shimmering-text";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { cn } from "@/lib/utils";
 
@@ -209,35 +211,34 @@ export default function HomeHero() {
   return (
     <section className="w-full bg-canvas">
       <div className="mx-auto max-w-7xl border-x border-hairline">
-        {/* Intro — scan lines only in this hero block */}
+        {/* Intro — dot grid background */}
         <RevealSection className="relative flex flex-col items-center overflow-hidden px-5 pt-24 pb-10 text-center sm:px-6 sm:pt-28 sm:pb-12 lg:pt-32 lg:pb-14">
-          <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                opacity: 0.14,
-                pointerEvents: "none",
-                backgroundImage:
-                  "repeating-linear-gradient(0deg, transparent 0px, transparent 3px, var(--primary) 3px, var(--primary) 4px)",
-                maskImage:
-                  "linear-gradient(to bottom, #000 0%, transparent 75%)",
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, #000 0%, transparent 75%)",
-              }}
-            />
-          </div>
+          <div
+            className="pointer-events-none absolute inset-0 z-0"
+            aria-hidden
+            style={{
+              WebkitMaskImage:
+                "radial-gradient(ellipse 80% 50% at 50% 0%, black 30%, transparent 70%)",
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--primary) 28%, transparent) 1px, transparent 0)",
+              backgroundSize: "10px 10px",
+              maskImage:
+                "radial-gradient(ellipse 80% 50% at 50% 0%, black 30%, transparent 70%)",
+              opacity: 0.80,
+            }}
+          />
 
           <Reveal
             animationNum={0}
             className="relative z-10 flex w-full flex-col items-center"
           >
-            <p className="inline-flex items-center rounded-lg border border-dashed border-hairline bg-surface-card px-3 py-1 text-caption font-medium text-body shadow-[8px_2px_16px_-2px_rgba(0,0,0,0.08)] dark:shadow-[8px_2px_16px_-2px_rgba(0,0,0,0.35)]">
-              Baharnani Advertising · Sheikh Zayed Road, Dubai
-            </p>
+            <GoogleRatingBadge
+              showLocation
+              className="rounded-lg border border-dashed border-hairline bg-surface-card px-3 py-1 text-caption font-medium text-body shadow-[8px_2px_16px_-2px_rgba(0,0,0,0.08)] dark:shadow-[8px_2px_16px_-2px_rgba(0,0,0,0.35)]"
+            />
 
             <h1 className="mt-6 max-w-4xl text-display-xl text-ink">
-              Exhibition stands, corporate gifts, print & events—produced
+              Exhibition stands, corporate gifts, print & events - produced
               in-house in Dubai.
             </h1>
           </Reveal>
@@ -311,8 +312,12 @@ export default function HomeHero() {
                 className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-brand-accent underline group underline-offset-4 decoration-brand-accent decoration-dotted cursor-pointer"
                 aria-label={`Explore ${activeSlide.title} on its dedicated site`}
               >
-                <ExternalLinkIcon className="h-4 w-4" />
-                Explore this Service
+                <ExternalLinkIcon className="h-4 w-4 shrink-0" />
+                <ShimmeringText
+                  text="Explore this Service"
+                  duration={1.4}
+                  className="underline underline-offset-4 decoration-brand-accent decoration-dotted [--color:var(--ink)] [--shimmering-color:var(--brand-accent)]"
+                />
               </button>
             </div>
 

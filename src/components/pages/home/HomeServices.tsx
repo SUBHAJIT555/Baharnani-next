@@ -91,7 +91,7 @@ const SERVICE_CARDS: ShowcaseCard[] = [
 export default function HomeServices() {
   return (
     <section id="services" className="w-full overflow-x-hidden bg-canvas">
-      <RevealSection className="mx-auto max-w-7xl border-x border-hairline px-5 py-10 sm:px-6 sm:py-14 lg:py-16">
+      <RevealSection className="mx-auto max-w-7xl border-x border-hairline px-5 py-10 sm:px-6 sm:py-14 lg:py-6">
         <Reveal
           animationNum={0}
           className="mb-8 grid grid-cols-1 gap-4 lg:mb-10 lg:grid-cols-12 lg:gap-8"

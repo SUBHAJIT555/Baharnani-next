@@ -178,7 +178,7 @@ export default function HomeAboutBrief() {
           <Reveal
             animationNum={3}
             as="article"
-            className="px-5 py-8 sm:px-6 md:px-8 md:py-10"
+            className="px-5 py-8 sm:px-6 md:px-8 md:py-6"
           >
             <p className="text-body-md leading-relaxed text-muted sm:text-[17px] sm:leading-7">
               As demand grows across{" "}
