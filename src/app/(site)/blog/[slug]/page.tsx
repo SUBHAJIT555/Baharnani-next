@@ -29,7 +29,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <main>
-      <PageHero eyebrow="Article" eyebrowIcon="file" title={title} />
+      <PageHero eyebrow="Article" eyebrowIcon="file" title={title} compact />
 
       <SectionDivider />
 

@@ -153,7 +153,7 @@ export default function HomeAboutBrief() {
               partners with hands-on expertise trusted by leading brands:
             </p>
 
-            <div className="relative mt-6 border border-hairline">
+            <div className="relative mt-6">
               <div
                 className="pointer-events-none absolute inset-0 grid grid-cols-2 lg:grid-cols-4"
                 aria-hidden

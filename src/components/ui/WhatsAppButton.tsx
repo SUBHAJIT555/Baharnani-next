@@ -1,7 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
@@ -25,96 +24,77 @@ const WHATSAPP_GRADIENT_DARK = `
 `;
 
 export default function WhatsAppButton() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const update = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      setIsVisible(scrollY > 120);
-    };
-
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
-
   return (
-    <AnimatePresence>
-      {isVisible ? (
-        <>
-          {/* Desktop — edge tab (gifts site pattern) */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed top-1/2 right-0 z-50 hidden -translate-y-1/2 md:block"
-          >
-            <a
-              href={getWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Contact on WhatsApp"
-              className={cn(
-                "group relative flex flex-col items-center gap-3 overflow-hidden rounded-l-2xl border border-r-0 border-[#25D366]/25 px-3 py-5",
-                "shadow-[-6px_0_24px_-10px_rgba(37,211,102,0.28)]",
-                "transition-[border-color,transform] duration-200",
-                "hover:border-[#25D366]/45 active:scale-[0.98]",
-                "dark:border-[#25D366]/20 dark:shadow-[-6px_0_28px_-10px_rgba(0,0,0,0.55)]",
-              )}
-            >
-              <div
-                className="absolute inset-0 z-0 block dark:hidden"
-                style={{ background: WHATSAPP_GRADIENT_LIGHT }}
-                aria-hidden
-              />
-              <div
-                className="absolute inset-0 z-0 hidden dark:block"
-                style={{ background: WHATSAPP_GRADIENT_DARK }}
-                aria-hidden
-              />
+    <>
+      {/* Desktop — edge tab */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className="fixed top-1/2 right-0 z-50 hidden -translate-y-1/2 md:block"
+      >
+        <a
+          href={getWhatsAppUrl()}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Contact on WhatsApp"
+          className={cn(
+            "group relative flex flex-col items-center gap-3 overflow-hidden rounded-l-2xl border border-r-0 border-[#25D366]/25 px-3 py-5",
+            "shadow-[-6px_0_24px_-10px_rgba(37,211,102,0.28)]",
+            "transition-[border-color,transform] duration-200",
+            "hover:border-[#25D366]/45 active:scale-[0.98]",
+            "dark:border-[#25D366]/20 dark:shadow-[-6px_0_28px_-10px_rgba(0,0,0,0.55)]",
+          )}
+        >
+          <div
+            className="absolute inset-0 z-0 block dark:hidden"
+            style={{ background: WHATSAPP_GRADIENT_LIGHT }}
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 z-0 hidden dark:block"
+            style={{ background: WHATSAPP_GRADIENT_DARK }}
+            aria-hidden
+          />
 
-              <span
-                className={cn(
-                  "relative z-10 flex size-8 items-center justify-center rounded-full",
-                  "bg-white text-[#25D366]",
-                  "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9)]",
-                  "transition-transform duration-200 group-hover:scale-105",
-                )}
-              >
-                <WhatsAppIcon className="size-[18px]" />
-              </span>
-
-              <span
-                className="relative z-10 text-[11px] font-bold uppercase tracking-[0.2em] text-ink dark:text-on-dark"
-                style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
-              >
-                WhatsApp
-              </span>
-            </a>
-          </motion.div>
-
-          {/* Mobile — floating FAB */}
-          <motion.a
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            href={getWhatsAppUrl()}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Contact on WhatsApp"
+          <span
             className={cn(
-              "fixed z-50 flex size-12 items-center justify-center rounded-full md:hidden",
-              "right-4 bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))]",
-              "bg-[#25D366] text-white shadow-[0_8px_24px_-8px_rgba(37,211,102,0.55)]",
-              "active:scale-[0.96]",
+              "relative z-10 flex size-8 items-center justify-center rounded-full",
+              "bg-white text-[#25D366]",
+              "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9)]",
+              "transition-transform duration-200 group-hover:scale-105",
             )}
           >
-            <WhatsAppIcon className="size-6" />
-          </motion.a>
-        </>
-      ) : null}
-    </AnimatePresence>
+            <WhatsAppIcon className="size-[18px]" />
+          </span>
+
+          <span
+            className="relative z-10 text-[11px] font-bold uppercase tracking-[0.2em] text-ink dark:text-on-dark"
+            style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+          >
+            WhatsApp
+          </span>
+        </a>
+      </motion.div>
+
+      {/* Mobile — floating FAB */}
+      <motion.a
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        href={getWhatsAppUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contact on WhatsApp"
+        className={cn(
+          "fixed z-50 flex size-12 items-center justify-center rounded-full md:hidden",
+          "right-4 bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))]",
+          "bg-[#25D366] text-white shadow-[0_8px_24px_-8px_rgba(37,211,102,0.55)]",
+          "active:scale-[0.96]",
+        )}
+      >
+        <WhatsAppIcon className="size-6" />
+      </motion.a>
+    </>
   );
 }

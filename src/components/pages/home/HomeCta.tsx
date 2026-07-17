@@ -1,10 +1,13 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import {
   accentButtonClasses,
+  buttonIconClasses,
   contactButtonIconClasses,
 } from "@/components/ui/button";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
@@ -46,7 +49,25 @@ function CtaCornerGridBackground() {
   );
 }
 
-export default function HomeCta() {
+type HomeCtaProps = {
+  title?: ReactNode;
+  description?: string;
+  primaryAction?: {
+    label: string;
+    href: string;
+    icon?: "contact" | "arrow";
+  };
+};
+
+export default function HomeCta({
+  title,
+  description,
+  primaryAction = {
+    label: "Contact us",
+    href: "/contact",
+    icon: "contact",
+  },
+}: HomeCtaProps) {
   return (
     <section id="contact-cta" className="w-full bg-canvas">
       <RevealSection className="relative mx-auto max-w-7xl overflow-hidden border-x border-hairline border-y">
@@ -57,25 +78,30 @@ export default function HomeCta() {
           className="relative z-10 mx-auto max-w-4xl px-5 py-16 text-center sm:px-6 sm:py-24 lg:py-28"
         >
           <h2 className="text-balance text-display-sm leading-snug text-ink md:text-display-md lg:text-display-lg lg:leading-tight">
-            Designed, Built, and Delivered Across{" "}
-            <span className="text-brand-accent">Dubai &amp; the UAE</span>.
+            {title ?? (
+              <>
+                Designed, Built, and Delivered Across{" "}
+                <span className="text-brand-accent">Dubai &amp; the UAE</span>.
+              </>
+            )}
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-body-md leading-relaxed text-muted sm:mt-5 sm:text-[17px] sm:leading-7">
-            We design, build, and install exhibition stands, manage events end
-            to end, handle commercial and promotional printing, and develop
-            websites, apps, exhibition kiosk games, and interactive event
-            tech - one team from brief to delivery across Dubai and the UAE.
+            {description ??
+              "We design, build, and install exhibition stands, manage events end to end, handle commercial and promotional printing, and develop websites, apps, exhibition kiosk games, and interactive event tech - one team from brief to delivery across Dubai and the UAE."}
           </p>
-     
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:mt-12 sm:flex-row">
             <Link
-              href="/contact"
+              href={primaryAction.href}
               className={accentButtonClasses("group w-full sm:w-auto")}
             >
-              Contact us
-              <MessageForwardIcon className={contactButtonIconClasses} />
+              {primaryAction.label}
+              {primaryAction.icon === "arrow" ? (
+                <ArrowRight className={buttonIconClasses} />
+              ) : (
+                <MessageForwardIcon className={contactButtonIconClasses} />
+              )}
             </Link>
 
             <a
