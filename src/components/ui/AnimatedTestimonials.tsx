@@ -145,7 +145,7 @@ export function AnimatedTestimonials({
         className,
       )}
     >
-      <div className="flex max-h-[420px] justify-center gap-6 overflow-hidden md:max-h-[740px]">
+      <div className="flex max-h-[min(420px,55vh)] justify-center gap-6 overflow-hidden md:max-h-[740px]">
         <TestimonialsColumn
           items={mobileColumn}
           className="md:hidden"

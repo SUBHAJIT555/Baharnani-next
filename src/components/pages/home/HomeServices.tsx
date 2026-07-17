@@ -98,7 +98,7 @@ export default function HomeServices() {
         >
           <div className="lg:col-span-5">
             <SectionEyebrow icon={Layers}>Services</SectionEyebrow>
-            <h2 className="mt-4 text-display-md text-ink">
+            <h2 className="mt-4 text-pretty text-display-sm text-ink md:text-display-md">
               Explore Baharnani Services in Dubai for Every Business Need.
             </h2>
           </div>

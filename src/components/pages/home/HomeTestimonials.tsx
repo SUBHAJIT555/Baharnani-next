@@ -53,7 +53,7 @@ export default function HomeTestimonials() {
             <SectionEyebrow icon={MessageSquareQuote}>
               Testimonials
             </SectionEyebrow>
-            <h2 className="mt-4 text-display-md text-ink">
+            <h2 className="mt-4 text-pretty text-display-sm text-ink md:text-display-md">
               What UAE brands say about working with Baharnani.
             </h2>
           </div>

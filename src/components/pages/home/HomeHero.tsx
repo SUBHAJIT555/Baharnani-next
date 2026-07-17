@@ -104,7 +104,7 @@ const HERO_SLIDES = [
 
 function SideRails() {
   return (
-    <div className="relative w-4 shrink-0 self-stretch overflow-hidden border-x border-hairline bg-canvas sm:w-6 md:w-8 lg:w-12">
+    <div className="relative hidden w-3 shrink-0 self-stretch overflow-hidden border-x border-hairline bg-canvas sm:block sm:w-6 md:w-8 lg:w-12">
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -141,7 +141,7 @@ function FeatureTab({
     <button
       type="button"
       className={cn(
-        "relative flex h-full w-full cursor-pointer flex-col items-start justify-start gap-1.5 overflow-hidden px-5 py-5 text-left transition-colors md:flex-1 md:px-6",
+        "relative flex h-full w-full cursor-pointer flex-col items-start justify-start gap-1.5 overflow-hidden px-4 py-4 text-left transition-colors sm:px-5 sm:py-5 md:flex-1 md:px-6",
         !isActive && "bg-canvas hover:bg-surface-soft/60"
       )}
       onClick={onClick}
@@ -239,7 +239,7 @@ export default function HomeHero() {
               className="rounded-lg border border-dashed border-hairline bg-surface-card px-3 py-1 text-caption font-medium text-body shadow-[8px_2px_16px_-2px_rgba(0,0,0,0.08)] dark:shadow-[8px_2px_16px_-2px_rgba(0,0,0,0.35)]"
             />
 
-            <h1 className="mt-6 max-w-4xl text-display-xl text-ink">
+            <h1 className="mt-6 max-w-4xl text-balance text-display-xl text-ink">
               Exhibition stands, corporate gifts, print & events - produced
               in-house in Dubai.
             </h1>
@@ -276,8 +276,8 @@ export default function HomeHero() {
           </Reveal>
         </RevealSection>
 
-        {/* Active service — fixed height, no nested cards */}
-        <div className="relative h-[300px] overflow-hidden border-y border-hairline sm:h-[280px]">
+        {/* Active service — grows on small screens so copy is not clipped */}
+        <div className="relative min-h-[320px] overflow-hidden border-y border-hairline sm:min-h-[300px] lg:min-h-[280px]">
           <div
             className="absolute inset-0 z-0 block dark:hidden transition-[background] duration-500"
             style={{ background: activeSlide.activeLightBg }}
@@ -289,8 +289,8 @@ export default function HomeHero() {
             aria-hidden
           />
 
-          <div className="relative z-10 mx-auto grid h-full max-w-7xl grid-cols-1 px-5 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16 lg:px-10">
-            <div className="flex h-full flex-col justify-center py-7 sm:py-8">
+          <div className="relative z-10 mx-auto grid min-h-[inherit] max-w-7xl grid-cols-1 px-5 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16 lg:px-10">
+            <div className="flex flex-col justify-center py-7 sm:py-8">
               <div className="flex items-center gap-3">
                 <PastelIconBox color={activeSlide.iconColor} size="sm">
                   <ActiveIcon className="h-4 w-4" strokeWidth={2} />
@@ -300,11 +300,11 @@ export default function HomeHero() {
                 </span>
               </div>
 
-              <h2 className="mt-4 text-display-md text-ink font-pixel!">
+              <h2 className="mt-4 text-pretty text-display-sm text-ink font-pixel! sm:text-display-md">
                 {activeSlide.title}
               </h2>
 
-              <p className="mt-2 line-clamp-2 min-h-13 max-w-xl text-body-md leading-relaxed text-muted sm:leading-7">
+              <p className="mt-2 line-clamp-3 max-w-xl text-body-md leading-relaxed text-muted sm:line-clamp-2 sm:min-h-13 sm:leading-7">
                 {activeSlide.description}
               </p>
 

@@ -66,7 +66,10 @@ function FaqSplitGrid() {
         {columns.map((column, colIndex) => (
           <ul
             key={colIndex}
-            className={cn(colIndex === 0 ? "md:pr-10" : "md:pl-10")}
+            className={cn(
+              "px-5 sm:px-0",
+              colIndex === 0 ? "md:pr-10" : "md:pl-10",
+            )}
           >
             {column.map((item, rowIndex) => {
               const number = colIndex * half + rowIndex + 1;

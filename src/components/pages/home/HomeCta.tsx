@@ -54,14 +54,14 @@ export default function HomeCta() {
 
         <Reveal
           animationNum={0}
-          className="relative z-10 mx-auto max-w-4xl px-5 py-20 text-center sm:px-6 sm:py-24 lg:py-28"
+          className="relative z-10 mx-auto max-w-4xl px-5 py-16 text-center sm:px-6 sm:py-24 lg:py-28"
         >
-          <h2 className="text-balance text-display-md leading-relaxed text-ink md:text-display-lg md:leading-relaxed">
+          <h2 className="text-balance text-display-sm leading-snug text-ink md:text-display-md lg:text-display-lg lg:leading-tight">
             Designed, Built, and Delivered Across{" "}
             <span className="text-brand-accent">Dubai &amp; the UAE</span>.
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-body-md leading-relaxed text-ink sm:text-[17px] sm:leading-7">
+          <p className="mx-auto mt-4 max-w-2xl text-body-md leading-relaxed text-muted sm:mt-5 sm:text-[17px] sm:leading-7">
             We design, build, and install exhibition stands, manage events end
             to end, handle commercial and promotional printing, and develop
             websites, apps, exhibition kiosk games, and interactive event

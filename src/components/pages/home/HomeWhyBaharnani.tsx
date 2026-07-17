@@ -104,7 +104,7 @@ export default function HomeWhyBaharnani() {
 
         <Reveal
           animationNum={1}
-          className="relative z-10 mx-auto mt-10 grid max-w-5xl gap-4 sm:grid-cols-3"
+          className="relative z-10 mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3"
         >
           {PATHWAYS.map((item) => (
             <motion.div
