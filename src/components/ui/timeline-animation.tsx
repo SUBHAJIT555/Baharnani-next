@@ -5,7 +5,6 @@ import {
   useContext,
   useMemo,
   useRef,
-  type ElementType,
   type ReactNode,
   type RefObject,
 } from "react";
@@ -73,7 +72,9 @@ export const TimelineContent = <T extends keyof HTMLElementTagNameMap = "div">({
     margin,
   });
 
-  const MotionComponent = motion[as || "div"] as ElementType;
+  const MotionComponent = motion[as || "div"] as React.FC<
+    HTMLMotionProps<"div"> & { children?: ReactNode }
+  >;
 
   return (
     <MotionComponent
@@ -82,7 +83,7 @@ export const TimelineContent = <T extends keyof HTMLElementTagNameMap = "div">({
       custom={animationNum}
       variants={sequenceVariants}
       className={className}
-      {...props}
+      {...(props as HTMLMotionProps<"div">)}
     >
       {children}
     </MotionComponent>
@@ -92,27 +93,24 @@ export const TimelineContent = <T extends keyof HTMLElementTagNameMap = "div">({
 type RevealSectionProps = {
   children?: ReactNode;
   className?: string;
-  as?: ElementType;
   once?: boolean;
   margin?: ViewMargin;
-} & Record<string, unknown>;
+};
 
 export function RevealSection({
   children,
   className,
-  as: Component = "div",
   once = true,
   margin = "-80px 0px -80px 0px",
-  ...props
 }: RevealSectionProps) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const value = useMemo(() => ({ ref, once, margin }), [once, margin]);
 
   return (
     <RevealContext.Provider value={value}>
-      <Component ref={ref} className={className} {...props}>
+      <div ref={ref} className={className}>
         {children}
-      </Component>
+      </div>
     </RevealContext.Provider>
   );
 }
@@ -139,8 +137,7 @@ export function Reveal<T extends keyof HTMLElementTagNameMap = "div">({
   const ctx = useContext(RevealContext);
 
   if (!ctx) {
-    const Fallback = (as || "div") as ElementType;
-    return <Fallback className={className}>{children}</Fallback>;
+    return <div className={className}>{children}</div>;
   }
 
   return (

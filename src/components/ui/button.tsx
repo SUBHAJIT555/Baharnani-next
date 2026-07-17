@@ -70,6 +70,10 @@ export const darkButtonClasses = (className?: string) =>
 export const buttonIconClasses =
   "h-3.5 w-3.5 shrink-0 opacity-70 transition-transform group-hover:translate-x-0.5";
 
+/** Contact / message-forward icon — a touch larger for legibility. */
+export const contactButtonIconClasses =
+  "h-4 w-4 shrink-0 opacity-80 transition-transform group-hover:translate-x-0.5";
+
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
 }

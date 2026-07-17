@@ -3,9 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Box, Gift, Laptop } from "lucide-react";
+import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import {
   accentButtonClasses,
   softButtonClasses,
+  contactButtonIconClasses,
   buttonIconClasses,
 } from "@/components/ui/button";
 import {
@@ -262,7 +264,7 @@ export default function HomeHero() {
               className={accentButtonClasses("group w-full sm:w-auto")}
             >
               Request a quote
-              <ArrowRight className={buttonIconClasses} />
+              <MessageForwardIcon className={contactButtonIconClasses} />
             </Link>
             <Link
               href="/services"

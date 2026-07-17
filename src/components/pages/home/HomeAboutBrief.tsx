@@ -128,13 +128,13 @@ export default function HomeAboutBrief() {
             <Reveal
               animationNum={1}
               as="article"
-              className="relative min-h-[220px] md:min-h-[280px]"
+              className="relative flex min-h-[220px] items-center justify-center p-6 md:min-h-[280px] md:p-8"
             >
               <Image
-                src="/images/about/production.webp"
-                alt="Exhibition production and show floor setup"
+                src="/images/HomePage/brand-deal.svg"
+                alt="Partnership and brand collaboration illustration"
                 fill
-                className="object-cover"
+                className="object-contain p-4 md:p-6"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </Reveal>

@@ -7,7 +7,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { ChevronDown, ChevronUp, Mail, X } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import BrandLogo from "@/components/ui/BrandLogo";
-import { accentButtonClasses } from "@/components/ui/button";
+import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
+import { accentButtonClasses, contactButtonIconClasses } from "@/components/ui/button";
 import { SERVICES, SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -239,9 +240,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <Link
                   href="/contact"
                   onClick={onClose}
-                  className={accentButtonClasses("mt-6 h-12 w-full")}
+                  className={accentButtonClasses("group mt-6 h-12 w-full")}
                 >
                   Contact us
+                  <MessageForwardIcon className={contactButtonIconClasses} />
                 </Link>
 
                 <div className="mt-6 flex items-center justify-between border-t border-hairline pt-4">

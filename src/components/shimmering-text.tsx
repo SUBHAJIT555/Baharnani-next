@@ -6,19 +6,12 @@ import { motion } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
-export type ShimmeringTextProps = Omit<React.ComponentProps<"span">, "children"> & {
-  /** The text to render with the shimmering effect. */
+export type ShimmeringTextProps = {
   text: string;
-  /**
-   * Duration in seconds for one shimmer cycle.
-   * @defaultValue 1
-   */
   duration?: number;
-  /**
-   * Whether the shimmer animation is paused.
-   * @defaultValue false
-   */
   isStopped?: boolean;
+  className?: string;
+  "aria-hidden"?: boolean;
 };
 
 export function ShimmeringText({
@@ -26,7 +19,7 @@ export function ShimmeringText({
   duration = 1,
   isStopped = false,
   className,
-  ...props
+  "aria-hidden": ariaHidden,
 }: ShimmeringTextProps) {
   const createCharVariants = React.useCallback(
     (charIndex: number): Variants => ({
@@ -59,7 +52,7 @@ export function ShimmeringText({
         "[--color:var(--muted)] [--shimmering-color:var(--ink)]",
         className
       )}
-      {...props}
+      aria-hidden={ariaHidden}
     >
       {text.split("").map((char, index) => (
         <motion.span

@@ -1,7 +1,7 @@
 "use client";
 
+import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import {
-  ArrowRight,
   Bike,
   Box,
   CalendarDays,
@@ -21,7 +21,7 @@ import ServicesDropdown, {
 import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon";
 import {
   accentButtonClasses,
-  buttonIconClasses,
+  contactButtonIconClasses,
 } from "@/components/ui/button";
 import MobileMenu from "@/components/layout/MobileMenu";
 import BrandLogo from "@/components/ui/BrandLogo";
@@ -135,7 +135,7 @@ export default function Header() {
               className={accentButtonClasses("group h-10 gap-2 px-4")}
             >
               Contact
-              <ArrowRight className={buttonIconClasses} />
+              <MessageForwardIcon className={contactButtonIconClasses} />
             </Link>
             <ThemeToggle variant="subtle" />
           </div>

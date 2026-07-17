@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
+import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import { PageHero } from "@/components/PageHero";
 import {
   accentButtonClasses,
   softButtonClasses,
+  contactButtonIconClasses,
   buttonIconClasses,
 } from "@/components/ui/button";
 import SectionDivider from "@/components/ui/SectionDivider";
@@ -64,6 +66,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             }
           >
             Request a quote
+            <MessageForwardIcon className={contactButtonIconClasses} />
           </Link>
         </div>
       </PageHero>

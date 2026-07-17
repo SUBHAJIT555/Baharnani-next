@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowRight, Box, Laptop, Printer, Sparkles } from "lucide-react";
+import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import {
   accentButtonClasses,
   softButtonClasses,
+  contactButtonIconClasses,
   buttonIconClasses,
 } from "@/components/ui/button";
 import PastelIconBox from "@/components/ui/PastelIconBox";
@@ -69,7 +71,7 @@ const PATHWAYS = [
 export default function HomeWhyBaharnani() {
   return (
     <section className="w-full bg-canvas">
-      <RevealSection className="relative mx-auto max-w-7xl overflow-hidden border-x border-hairline px-5 py-12 sm:px-6 md:px-8 md:py-6">
+      <RevealSection className="relative mx-auto max-w-7xl overflow-hidden border-x border-hairline px-5 py-6 sm:px-6 md:px-8 md:py-6">
         <div
           className="pointer-events-none absolute inset-0 z-0"
           style={{
@@ -77,10 +79,10 @@ export default function HomeWhyBaharnani() {
               "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, black 70%)",
             backgroundImage:
               "radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--primary) 35%, transparent) 1px, transparent 0)",
-            backgroundSize: "20px 20px",
+            backgroundSize: "12px 12px",
             maskImage:
               "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, black 70%)",
-            opacity: 0.5,
+            opacity: 0.50,
           }}
           aria-hidden
         />
@@ -109,7 +111,7 @@ export default function HomeWhyBaharnani() {
               key={item.title}
               whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
-              className="relative overflow-hidden rounded-xl p-6 text-left"
+              className="relative overflow-hidden rounded-xl p-6 text-left border border-hairline border-dashed"
             >
               <div
                 className="pointer-events-none absolute inset-0 dark:hidden"
@@ -145,7 +147,7 @@ export default function HomeWhyBaharnani() {
             className={accentButtonClasses("group w-full sm:w-auto")}
           >
             Request a quote
-            <ArrowRight className={buttonIconClasses} />
+            <MessageForwardIcon className={contactButtonIconClasses} />
           </Link>
           <Link
             href="/about"

@@ -2,6 +2,7 @@ import Link from "next/link";
 import BrandLogo from "@/components/ui/BrandLogo";
 import FooterNewsletter from "@/components/layout/FooterNewsletter";
 import { LEGAL_LINKS, SERVICES, SITE } from "@/lib/site";
+import FooterAnimatedPrelude from "@/components/layout/FooterAnimatedPrelude";
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -13,8 +14,8 @@ function FooterHeading({ children }: { children: React.ReactNode }) {
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-hairline bg-canvas">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 border-x border-hairline px-5 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:py-16">
+    <footer className="w-full bg-canvas">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 border-x border-hairline px-5 pt-14 pb-8 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:pt-16 lg:pb-10">
         <div className="space-y-6 sm:col-span-2 lg:col-span-1">
           <div className="space-y-4">
             <Link href="/" className="inline-flex">
@@ -110,6 +111,8 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      
+      <FooterAnimatedPrelude />
 
       <div className="border-t border-hairline">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 border-x border-hairline px-5 py-6 text-body-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
