@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Briefcase,
@@ -17,6 +18,7 @@ import {
 } from "lucide-react";
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import { WhatsAppOutlineIcon } from "@/components/icons/WhatsAppIcon";
+import MagicRings from "@/components/ui/MagicRings";
 import { SectionEyebrow } from "@/components/ui/Section";
 import {
   accentButtonClasses,
@@ -69,7 +71,25 @@ export type PageHeroProps = {
   className?: string;
 };
 
+function useIsDarkMode() {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const sync = () => setIsDark(root.classList.contains("dark"));
+    sync();
+
+    const observer = new MutationObserver(sync);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
+  return isDark;
+}
+
 function PageHeroBackground() {
+  const isDark = useIsDarkMode();
+
   const gridStyle = {
     backgroundImage: `
       linear-gradient(90deg, ${GRID_LINE} 1px, transparent 0),
@@ -88,8 +108,63 @@ function PageHeroBackground() {
       "linear-gradient(to bottom, color-mix(in srgb, var(--canvas) 55%, transparent) 0%, transparent 8%, transparent 68%, color-mix(in srgb, var(--canvas) 85%, transparent) 88%, var(--canvas) 100%)",
   } as const;
 
+  const rings = isDark
+    ? {
+        color: "#60a5fa",
+        colorTwo: "#38bdf8",
+        opacity: 0.55,
+        attenuation: 12,
+        lineThickness: 1.4,
+        noiseAmount: 0.30,
+        ringCount: 6,
+      }
+    : {
+        color: "#3b82f6",
+        colorTwo: "#60a5fa",
+        opacity: 0.46,
+        attenuation: 15,
+        lineThickness: 1.25,
+        noiseAmount: 0.06,
+        ringCount: 6,
+      };
+
   return (
     <div className="pointer-events-none absolute inset-0 z-0 bg-canvas" aria-hidden>
+      <div className="absolute inset-0 flex items-center justify-center opacity-50 dark:opacity-100">
+        <div className="absolute inset-0 scale-110 sm:scale-100">
+          <MagicRings
+            color={rings.color}
+            colorTwo={rings.colorTwo}
+            ringCount={rings.ringCount}
+            speed={1.5}
+            attenuation={rings.attenuation}
+            lineThickness={rings.lineThickness}
+            baseRadius={0.15}
+            radiusStep={0.09}
+            scaleRate={0.08}
+            opacity={rings.opacity}
+            blur={0.5}
+            noiseAmount={rings.noiseAmount}
+            rotation={0}
+            ringGap={1.5}
+            fadeIn={0.7}
+            fadeOut={0.5}
+            followMouse={false}
+            clickBurst={false}
+            hoverScale={1}
+            parallax={0}
+          />
+        </div>
+      </div>
+      {!isDark ? (
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 48% 40% at 50% 42%, color-mix(in srgb, var(--canvas) 38%, transparent) 0%, transparent 68%)",
+          }}
+        />
+      ) : null}
       <div className="absolute inset-0" style={gridStyle} />
       <div className="absolute inset-0" style={edgeFadeStyle} />
     </div>
