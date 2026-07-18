@@ -1,10 +1,10 @@
-import Link from "next/link";
-
+import ServicesCategories from "@/components/pages/services/ServicesCategories";
+import ServicesWhyUs from "@/components/pages/services/ServicesWhyUs";
+import HomeCta from "@/components/pages/home/HomeCta";
 import { PageHero } from "@/components/PageHero";
 import SectionDivider from "@/components/ui/SectionDivider";
-import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { pageMetadata } from "@/lib/seo";
-import { SERVICES } from "@/lib/site";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata = pageMetadata(
   "Services",
@@ -13,40 +13,46 @@ export const metadata = pageMetadata(
 
 export default function ServicesPage() {
   return (
-    <main>
+    <main className="w-full overflow-x-hidden">
       <PageHero
-        eyebrow="Services"
+        eyebrow="Full-service production"
         eyebrowIcon="layers"
-        title="Services we offer"
-        description="From concept to production — one team covering the brand surfaces that matter in Dubai and the UAE."
+        title="Everything your brand"
+        titleAccent="needs"
+        subtitle="from stands to digital"
+        description="Exhibition stands, corporate gifts, commercial print, acrylic fabrication, rider equipment, event management, and creative digital through Code Cobble—strategy and production under one roof in Dubai."
+        primaryAction={{
+          label: "Request a quote",
+          href: "/contact",
+        }}
+          secondaryAction={{
+          label: "Chat on WhatsApp",
+          href: getWhatsAppUrl(),
+          icon: "whatsapp",
+          variant: "soft",
+        }}
       />
 
       <SectionDivider />
-
-      <section className="w-full bg-canvas">
-        <RevealSection className="mx-auto max-w-7xl border-x border-hairline px-5 py-10 sm:px-6 sm:py-14 lg:py-16">
-          <div className="grid divide-y divide-hairline border border-hairline sm:grid-cols-2 sm:divide-x sm:divide-y-0">
-            {SERVICES.map((service, index) => (
-              <Reveal key={service.slug} animationNum={index}>
-                <Link
-                  href={service.href}
-                  className="flex gap-4 p-6 transition-colors hover:bg-surface-soft sm:min-h-[180px]"
-                >
-                  <span className="font-mono text-caption text-muted">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h2 className="text-title-md text-ink">{service.title}</h2>
-                    <p className="mt-2 text-body-sm text-muted">
-                      {service.description}
-                    </p>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </RevealSection>
-      </section>
+      <ServicesCategories />
+      <SectionDivider />
+      <ServicesWhyUs />
+      <SectionDivider />
+      <HomeCta
+        title={
+          <>
+            Ready to brief your next{" "}
+            <span className="text-brand-accent">stand, gift, or campaign</span>?
+          </>
+        }
+        description="Tell us what you need—exhibition stands, corporate gifts, print, acrylic, rider kits, events, or digital through Code Cobble. Our Dubai team will map scope, timeline, and budget so production starts with a clear plan."
+        primaryAction={{
+          label: "Request a quote",
+          href: "/contact",
+          icon: "contact",
+        }}
+      />
+      <SectionDivider />
     </main>
   );
 }

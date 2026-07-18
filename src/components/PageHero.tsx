@@ -16,6 +16,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
+import { WhatsAppOutlineIcon } from "@/components/icons/WhatsAppIcon";
 import { SectionEyebrow } from "@/components/ui/Section";
 import {
   accentButtonClasses,
@@ -41,7 +42,7 @@ const ICONS = {
   sparkles: Sparkles,
 } as const;
 
-const GRID_LINE = "color-mix(in srgb, var(--primary) 14%, transparent)";
+const GRID_LINE = "color-mix(in srgb, var(--primary) 22%, transparent)";
 
 export type PageHeroIcon = keyof typeof ICONS;
 
@@ -49,7 +50,7 @@ export type PageHeroAction = {
   label: string;
   href: string;
   variant?: ButtonVariant;
-  icon?: "arrow" | "contact";
+  icon?: "arrow" | "contact" | "whatsapp";
 };
 
 export type PageHeroProps = {
@@ -84,7 +85,7 @@ function PageHeroBackground() {
 
   const edgeFadeStyle = {
     background:
-      "linear-gradient(to bottom, var(--canvas) 0%, color-mix(in srgb, var(--canvas) 85%, transparent) 12%, transparent 32%, transparent 68%, color-mix(in srgb, var(--canvas) 85%, transparent) 88%, var(--canvas) 100%)",
+      "linear-gradient(to bottom, color-mix(in srgb, var(--canvas) 55%, transparent) 0%, transparent 8%, transparent 68%, color-mix(in srgb, var(--canvas) 85%, transparent) 88%, var(--canvas) 100%)",
   } as const;
 
   return (
@@ -103,15 +104,34 @@ function actionButtonClasses(variant: ButtonVariant = "dark") {
 
 function PageHeroActionLink({ action }: { action: PageHeroAction }) {
   const variant = action.variant ?? "accent";
+  const isExternal = /^https?:\/\//.test(action.href);
   const icon =
     action.icon === "contact" ? (
       <MessageForwardIcon className={contactButtonIconClasses} />
+    ) : action.icon === "whatsapp" ? (
+      <WhatsAppOutlineIcon className={buttonIconClasses} />
     ) : action.icon === "arrow" ? (
       <ArrowRight className={buttonIconClasses} />
     ) : null;
 
+  const className = actionButtonClasses(variant);
+
+  if (isExternal) {
+    return (
+      <a
+        href={action.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+      >
+        {action.label}
+        {icon}
+      </a>
+    );
+  }
+
   return (
-    <Link href={action.href} className={actionButtonClasses(variant)}>
+    <Link href={action.href} className={className}>
       {action.label}
       {icon}
     </Link>

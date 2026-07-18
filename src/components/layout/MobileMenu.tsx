@@ -174,18 +174,36 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                 <div className="mt-1 ml-2 flex flex-col gap-0.5 border-l border-hairline pl-2">
                                   {SERVICES.map((service) => {
                                     const serviceActive =
+                                      !service.externalUrl &&
                                       pathname === service.href;
+                                    const className = cn(
+                                      "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                                      serviceActive
+                                        ? "bg-surface-soft font-semibold text-ink"
+                                        : "text-body hover:bg-surface-soft hover:text-ink",
+                                    );
+
+                                    if (service.externalUrl) {
+                                      return (
+                                        <a
+                                          key={service.slug}
+                                          href={service.externalUrl}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          onClick={onClose}
+                                          className={className}
+                                        >
+                                          {service.title}
+                                        </a>
+                                      );
+                                    }
+
                                     return (
                                       <Link
                                         key={service.slug}
                                         href={service.href}
                                         onClick={onClose}
-                                        className={cn(
-                                          "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                                          serviceActive
-                                            ? "bg-surface-soft font-semibold text-ink"
-                                            : "text-body hover:bg-surface-soft hover:text-ink"
-                                        )}
+                                        className={className}
                                       >
                                         {service.title}
                                       </Link>

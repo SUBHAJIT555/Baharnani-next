@@ -25,7 +25,9 @@ import {
 } from "@/components/ui/button";
 import MobileMenu from "@/components/layout/MobileMenu";
 import BrandLogo from "@/components/ui/BrandLogo";
+import { WhatsAppOutlineIcon } from "@/components/icons/WhatsAppIcon";
 import { SERVICES } from "@/lib/site";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 type MenuItem = {
   key: number;
@@ -66,6 +68,7 @@ const NAV_SERVICES: NavServiceItem[] = SERVICES.map((service) => {
     description: service.description,
     iconColor: meta.color,
     Icon: meta.Icon,
+    externalUrl: service.externalUrl,
   };
 });
 
@@ -141,6 +144,16 @@ export default function Header() {
           </div>
 
           <div className="flex min-w-0 flex-1 items-center justify-end gap-2 pl-3 lg:hidden">
+            <a
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contact on WhatsApp"
+              title="Chat on WhatsApp"
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-transparent text-body transition-colors hover:bg-surface-soft hover:text-ink"
+            >
+              <WhatsAppOutlineIcon className="size-[18px]" />
+            </a>
             <ThemeToggle variant="subtle" />
             <motion.button
               type="button"
@@ -148,7 +161,7 @@ export default function Header() {
               whileTap={{ scale: 0.95 }}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
-              className="mobile-menu-button relative inline-flex size-10 shrink-0 items-center justify-center rounded-lg border border-hairline text-ink transition-colors hover:bg-surface-soft"
+              className="mobile-menu-button relative inline-flex size-10 shrink-0 items-center justify-center rounded-lg text-ink transition-colors hover:bg-surface-soft"
             >
               <MenuToggleIcon
                 open={isMenuOpen}

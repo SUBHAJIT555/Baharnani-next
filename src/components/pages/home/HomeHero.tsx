@@ -22,11 +22,13 @@ import { cn } from "@/lib/utils";
 
 const HERO_SLIDES = [
   {
+    shortTitle: "Exhibition Stand",
     title: "Exhibition Stand Supplier.",
     // Keep copy length even across slides so line wrap stays stable.
     description:
       "Custom trade-show stands designed, built, and installed across Dubai, Sharjah, and Abu Dhabi—including DWTC, ADNEC, and Expo Centre.",
-    tabBlurb: "Custom Design, Fabricate, and Install stands for UAE trade shows.",
+    tabBlurb:
+      "Custom exhibition stand design, build, and installation across the UAE.",
     externalUrl: "https://exhibitionstandsuae.ae/",
     Icon: Box,
     iconColor: "#C1D8FD",
@@ -49,10 +51,12 @@ const HERO_SLIDES = [
     `,
   },
   {
+    shortTitle: "Corporate Gifts",
     title: "Corporate Gifts Supplier.",
     description:
       "Logo-branded gifts, executive hampers, and bulk giveaways for appreciation, onboarding kits, and campaign launches across the UAE.",
-    tabBlurb: "Custom Branded gifts, hampers, and bulk giveaways with delivery support.",
+    tabBlurb:
+      "Custom, luxury, and promotional corporate gifts for Dubai & the UAE.",
     externalUrl: "https://corporategiftsdubaii.ae/",
     Icon: Gift,
     iconColor: "#B6E9C8",
@@ -75,10 +79,12 @@ const HERO_SLIDES = [
     `,
   },
   {
+    shortTitle: "Creative Agency",
     title: "Creative Agency.",
     description:
       "Custom Websites, Apps, and Kiosk Game through Code Cobble - built so your brand looks sharp online and converts when it counts.",
-    tabBlurb: "Custom Websites, Apps, and Kiosk Game through Code Cobble.",
+    tabBlurb:
+      "Website development, UI/UX, kiosk games, and digital solutions through Code Cobble.",
     externalUrl: "https://codecobble.com/",
     Icon: Laptop,
     iconColor: "#FFF8E1",
@@ -123,6 +129,7 @@ function SideRails() {
 function FeatureTab({
   title,
   blurb,
+  Icon,
   isActive,
   progress,
   activeLightBg,
@@ -131,6 +138,7 @@ function FeatureTab({
 }: {
   title: string;
   blurb: string;
+  Icon: typeof Box;
   isActive: boolean;
   progress: number;
   activeLightBg: string;
@@ -141,8 +149,8 @@ function FeatureTab({
     <button
       type="button"
       className={cn(
-        "relative flex h-full w-full cursor-pointer flex-col items-start justify-start gap-1.5 overflow-hidden px-4 py-4 text-left transition-colors sm:px-5 sm:py-5 md:flex-1 md:px-6",
-        !isActive && "bg-canvas hover:bg-surface-soft/60"
+        "relative flex h-full w-full cursor-pointer flex-col items-start justify-start gap-2 overflow-hidden bg-surface-soft px-5 py-5 text-left transition-colors sm:px-6 sm:py-6 md:flex-1",
+        !isActive && "hover:bg-surface-card",
       )}
       onClick={onClick}
     >
@@ -167,15 +175,22 @@ function FeatureTab({
         </>
       ) : null}
 
+      <Icon
+        className={cn(
+          "relative z-1 h-5 w-5 shrink-0",
+          isActive ? "text-ink" : "text-body",
+        )}
+        strokeWidth={2}
+      />
       <div
         className={cn(
           "relative z-1 self-stretch text-sm font-semibold tracking-tight md:text-base",
-          isActive ? "text-ink" : "text-body"
+          isActive ? "text-ink" : "text-ink",
         )}
       >
         {title}
       </div>
-      <div className="relative z-1 line-clamp-2 min-h-10 self-stretch text-body-sm leading-relaxed text-muted">
+      <div className="relative z-1 line-clamp-3 min-h-12 self-stretch text-body-sm leading-relaxed text-muted">
         {blurb}
       </div>
     </button>
@@ -336,15 +351,16 @@ export default function HomeHero() {
         </div>
 
         {/* Switcher tabs — equal height row */}
-        <div className="flex items-stretch justify-center border-b border-hairline">
+        <div className="flex items-stretch justify-center border-b border-hairline bg-surface-soft">
           <SideRails />
 
-          <div className="grid min-w-0 flex-1 grid-cols-1 divide-y divide-hairline md:grid-cols-3 md:divide-x md:divide-y-0">
+          <div className="grid min-w-0 flex-1 grid-cols-1 divide-y divide-dotted divide-hairline md:grid-cols-3 md:divide-x md:divide-y-0">
             {HERO_SLIDES.map((slide, index) => (
               <FeatureTab
-                key={slide.title}
-                title={slide.title}
+                key={slide.shortTitle}
+                title={slide.shortTitle}
                 blurb={slide.tabBlurb}
+                Icon={slide.Icon}
                 isActive={activeCard === index}
                 progress={activeCard === index ? progress : 0}
                 activeLightBg={slide.activeLightBg}

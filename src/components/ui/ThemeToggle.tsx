@@ -50,8 +50,8 @@ export default function ThemeToggle({
       className={cn(
         "inline-flex shrink-0 items-center justify-center transition-colors",
         variant === "subtle"
-          ? "h-9 w-9 rounded-full border border-hairline bg-canvas text-body hover:bg-surface-soft hover:text-ink"
-          : "h-9 w-9 rounded-full border border-hairline bg-canvas text-ink hover:bg-surface-card",
+          ? "h-9 w-9 rounded-full bg-transparent text-body hover:bg-surface-soft hover:text-ink"
+          : "h-9 w-9 rounded-full bg-transparent text-ink hover:bg-surface-soft",
         className
       )}
     >
