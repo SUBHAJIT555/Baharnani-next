@@ -1,14 +1,64 @@
 import Link from "next/link";
 import BrandLogo from "@/components/ui/BrandLogo";
 import FooterNewsletter from "@/components/layout/FooterNewsletter";
-import { LEGAL_LINKS, SERVICES, SITE } from "@/lib/site";
 import FooterAnimatedPrelude from "@/components/layout/FooterAnimatedPrelude";
+import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
+import { LEGAL_LINKS, SERVICES, SITE } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
   return (
     <h3 className="inline-flex items-center rounded-lg border border-dashed border-hairline bg-surface-card px-3 py-1 text-caption font-medium text-body">
       {children}
     </h3>
+  );
+}
+
+const footerLinkClass = cn(
+  "group inline-flex items-center gap-1 text-muted",
+  "transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+  "hover:text-brand-accent",
+);
+
+const footerLinkIconClass = cn(
+  "size-3.5 shrink-0 text-brand-accent",
+  "opacity-0 -translate-x-1 translate-y-1",
+  "transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+  "group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0",
+);
+
+function FooterLink({
+  href,
+  children,
+  external,
+}: {
+  href: string;
+  children: React.ReactNode;
+  external?: boolean;
+}) {
+  const icon = (
+    <ArrowUpRightIcon className={footerLinkIconClass} />
+  );
+
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={footerLinkClass}
+      >
+        <span>{children}</span>
+        {icon}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={footerLinkClass}>
+      <span>{children}</span>
+      {icon}
+    </Link>
   );
 }
 
@@ -31,15 +81,10 @@ export default function Footer() {
 
         <div className="space-y-4">
           <FooterHeading>Services</FooterHeading>
-          <ul className="space-y-2 text-body-sm text-muted">
+          <ul className="space-y-2 text-body-sm">
             {SERVICES.map((service) => (
               <li key={service.slug}>
-                <Link
-                  href={service.href}
-                  className="transition-colors hover:text-ink"
-                >
-                  {service.title}
-                </Link>
+                <FooterLink href={service.href}>{service.title}</FooterLink>
               </li>
             ))}
           </ul>
@@ -47,71 +92,57 @@ export default function Footer() {
 
         <div className="space-y-4">
           <FooterHeading>Company</FooterHeading>
-          <ul className="space-y-2 text-body-sm text-muted">
+          <ul className="space-y-2 text-body-sm">
             <li>
-              <Link href="/" className="transition-colors hover:text-ink">
-                Home
-              </Link>
+              <FooterLink href="/">Home</FooterLink>
             </li>
             <li>
-              <Link href="/about" className="transition-colors hover:text-ink">
-                About
-              </Link>
+              <FooterLink href="/about">About</FooterLink>
             </li>
             <li>
-              <Link href="/blog" className="transition-colors hover:text-ink">
-                Blog
-              </Link>
+              <FooterLink href="/blog">Blog</FooterLink>
             </li>
             <li>
-              <Link href="/contact" className="transition-colors hover:text-ink">
-                Contact
-              </Link>
+              <FooterLink href="/contact">Contact</FooterLink>
             </li>
           </ul>
         </div>
-
-       
 
         <div className="space-y-8">
           <div className="space-y-4">
             <FooterHeading>Contact</FooterHeading>
             <ul className="space-y-2 text-body-sm text-muted">
-              <li>{SITE.address}</li>
               <li>
-                <a
-                  href={`mailto:${SITE.email}`}
-                  className="transition-colors hover:text-ink"
-                >
-                  {SITE.email}
-                </a>
+                <FooterLink href={SITE.googleMapsUrl} external>
+                  {SITE.address}
+                </FooterLink>
               </li>
               <li>
-                <a
-                  href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-                  className="transition-colors hover:text-ink"
-                >
+                <FooterLink href={`mailto:${SITE.email}`} external>
+                  {SITE.email}
+                </FooterLink>
+              </li>
+              <li>
+                <FooterLink href={`tel:${SITE.phone.replace(/\s/g, "")}`} external>
                   {SITE.phone}
-                </a>
+                </FooterLink>
               </li>
             </ul>
           </div>
 
           <div className="space-y-4">
             <FooterHeading>Legal</FooterHeading>
-            <ul className="space-y-2 text-body-sm text-muted">
+            <ul className="space-y-2 text-body-sm">
               {LEGAL_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="transition-colors hover:text-ink">
-                    {link.label}
-                  </Link>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </div>
-      
+
       <FooterAnimatedPrelude />
 
       <div className="border-t border-hairline">
@@ -138,9 +169,14 @@ export default function Footer() {
               href="https://subhajit-dhali.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink transition-colors hover:underline"
+              className={cn(
+                "group inline-flex items-center gap-1 text-ink",
+                "transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                "hover:text-brand-accent",
+              )}
             >
               subhajit
+              <ArrowUpRightIcon className={footerLinkIconClass} />
             </a>
           </p>
         </div>
