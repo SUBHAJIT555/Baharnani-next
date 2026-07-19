@@ -68,7 +68,7 @@ export const darkButtonClasses = (className?: string) =>
 
 /** Chevron / trailing icon — slightly muted so the label stays primary. */
 export const buttonIconClasses =
-  "h-3.5 w-3.5 shrink-0 opacity-70 transition-transform group-hover:translate-x-0.5";
+  "h-3.5 w-3.5 shrink-0 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5";
 
 /** Contact / message-forward icon — a touch larger for legibility. */
 export const contactButtonIconClasses =

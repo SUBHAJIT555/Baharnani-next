@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowRight, Box, Laptop, Printer, Sparkles } from "lucide-react";
+import { Box, Laptop, Printer, Sparkles } from "lucide-react";
+import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import {
   accentButtonClasses,
@@ -154,7 +155,7 @@ export default function HomeWhyBaharnani() {
             className={softButtonClasses("group w-full sm:w-auto")}
           >
             About Baharnani
-            <ArrowRight className={buttonIconClasses} />
+            <ArrowUpRightIcon className={buttonIconClasses} />
           </Link>
         </Reveal>
       </RevealSection>

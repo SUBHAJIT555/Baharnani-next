@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import { PageHero } from "@/components/PageHero";
+import ServiceDetailLayout from "@/components/pages/services/ServiceDetailLayout";
 import {
   accentButtonClasses,
   softButtonClasses,
@@ -11,7 +12,9 @@ import {
 } from "@/components/ui/button";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
+import { getServicePageContent } from "@/lib/service-pages";
 import { getServiceBySlug, SERVICES } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 type ServicePageProps = {
@@ -24,16 +27,27 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: ServicePageProps) {
   const { slug } = await params;
+  const page = getServicePageContent(slug);
   const service = getServiceBySlug(slug);
-  if (!service) return {};
-  return {
-    title: service.title,
-    description: service.description,
-  };
+  if (!service && !page) return {};
+
+  if (page) {
+    return pageMetadata(
+      `${page.hero.title}${page.hero.titleAccent ? ` ${page.hero.titleAccent}` : ""}`,
+      page.hero.description ?? service?.description ?? "",
+    );
+  }
+
+  return pageMetadata(service!.title, service!.description);
 }
 
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params;
+  const pageContent = getServicePageContent(slug);
+  if (pageContent) {
+    return <ServiceDetailLayout content={pageContent} />;
+  }
+
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
@@ -54,7 +68,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               className={cn(accentButtonClasses("group w-full sm:w-auto"), "gap-2")}
             >
               Visit dedicated site
-              <ArrowUpRight className={buttonIconClasses} />
+              <ArrowUpRightIcon className={buttonIconClasses} />
             </a>
           ) : null}
           <Link

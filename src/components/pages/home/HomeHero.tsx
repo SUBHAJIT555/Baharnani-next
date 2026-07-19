@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Box, Gift, Laptop } from "lucide-react";
+import { Box, Gift, Laptop } from "lucide-react";
+import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import {
   accentButtonClasses,
@@ -286,7 +287,7 @@ export default function HomeHero() {
               className={softButtonClasses("group w-full sm:w-auto")}
             >
               Browse all services
-              <ArrowRight className={buttonIconClasses} />
+              <ArrowUpRightIcon className={buttonIconClasses} />
             </Link>
           </Reveal>
         </RevealSection>

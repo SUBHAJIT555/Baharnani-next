@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
-  ArrowRight,
   Briefcase,
   Building2,
   Cookie,
@@ -16,6 +15,7 @@ import {
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
+import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import { WhatsAppOutlineIcon } from "@/components/icons/WhatsAppIcon";
 import MagicRings from "@/components/ui/MagicRings";
@@ -186,7 +186,7 @@ function PageHeroActionLink({ action }: { action: PageHeroAction }) {
     ) : action.icon === "whatsapp" ? (
       <WhatsAppOutlineIcon className={buttonIconClasses} />
     ) : action.icon === "arrow" ? (
-      <ArrowRight className={buttonIconClasses} />
+      <ArrowUpRightIcon className={buttonIconClasses} />
     ) : null;
 
   const className = actionButtonClasses(variant);

@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import {
@@ -98,7 +98,7 @@ export default function HomeCta({
             >
               {primaryAction.label}
               {primaryAction.icon === "arrow" ? (
-                <ArrowRight className={buttonIconClasses} />
+                <ArrowUpRightIcon className={buttonIconClasses} />
               ) : (
                 <MessageForwardIcon className={contactButtonIconClasses} />
               )}
