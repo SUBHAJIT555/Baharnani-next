@@ -8,7 +8,8 @@ import { cn } from "@/lib/utils";
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="inline-flex items-center rounded-lg border border-dashed border-hairline bg-surface-card px-3 py-1 text-caption font-medium text-body">
+    <h3 className="flex items-center gap-2 text-sm font-medium text-muted">
+      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-ink" aria-hidden />
       {children}
     </h3>
   );
@@ -90,22 +91,38 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="space-y-4">
-          <FooterHeading>Company</FooterHeading>
-          <ul className="space-y-2 text-body-sm">
-            <li>
-              <FooterLink href="/">Home</FooterLink>
-            </li>
-            <li>
-              <FooterLink href="/about">About</FooterLink>
-            </li>
-            <li>
-              <FooterLink href="/blog">Blog</FooterLink>
-            </li>
-            <li>
-              <FooterLink href="/contact">Contact</FooterLink>
-            </li>
-          </ul>
+        <div className="space-y-8">
+          <div className="space-y-4">
+            <FooterHeading>Company</FooterHeading>
+            <ul className="space-y-2 text-body-sm">
+              <li>
+                <FooterLink href="/">Home</FooterLink>
+              </li>
+              <li>
+                <FooterLink href="/about">About</FooterLink>
+              </li>
+              <li>
+                <FooterLink href="/services">Services</FooterLink>
+              </li>
+              <li>
+                <FooterLink href="/blog">Blogs</FooterLink>
+              </li>
+              <li>
+                <FooterLink href="/contact">Contact</FooterLink>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-4">
+            <FooterHeading>Legal</FooterHeading>
+            <ul className="space-y-2 text-body-sm">
+              {LEGAL_LINKS.map((link) => (
+                <li key={link.href}>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="space-y-8">
@@ -131,13 +148,26 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <FooterHeading>Legal</FooterHeading>
+            <FooterHeading>Social</FooterHeading>
             <ul className="space-y-2 text-body-sm">
-              {LEGAL_LINKS.map((link) => (
-                <li key={link.href}>
-                  <FooterLink href={link.href}>{link.label}</FooterLink>
-                </li>
-              ))}
+              <li>
+                <FooterLink href="https://www.facebook.com/BAHARNANIADV" external>
+                  Facebook
+                </FooterLink>
+              </li>
+              <li>
+                <FooterLink href="https://www.instagram.com/baharnaniadv/" external>
+                  Instagram
+                </FooterLink>
+              </li>
+              <li>
+                <FooterLink
+                  href="https://www.linkedin.com/company/baharnaniadvertisingdubai/"
+                  external
+                >
+                  LinkedIn
+                </FooterLink>
+              </li>
             </ul>
           </div>
         </div>

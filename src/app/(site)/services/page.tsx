@@ -23,7 +23,8 @@ export default function ServicesPage() {
         description="Exhibition stands, corporate gifts, commercial print, acrylic fabrication, rider equipment, event management, and creative digital through Code Cobble—strategy and production under one roof in Dubai."
         primaryAction={{
           label: "Request a quote",
-          href: "/contact",
+          openQuote: true,
+          icon: "contact",
         }}
           secondaryAction={{
           label: "Chat on WhatsApp",
@@ -48,7 +49,7 @@ export default function ServicesPage() {
         description="Tell us what you need—exhibition stands, corporate gifts, print, acrylic, rider kits, events, or digital through Code Cobble. Our Dubai team will map scope, timeline, and budget so production starts with a clear plan."
         primaryAction={{
           label: "Request a quote",
-          href: "/contact",
+          openQuote: true,
           icon: "contact",
         }}
       />

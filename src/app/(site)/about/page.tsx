@@ -24,8 +24,9 @@ export default function AboutPage() {
         subtitle="for exhibition, print, gifts & events"
         description="Baharnani Advertising LLC is a Dubai-based agency specializing in exhibition stands, corporate gifts, commercial print, event management, and digital—delivering strategy, production, and execution under one roof."
         primaryAction={{
-          label: "Contact us",
-          href: "/contact",
+          label: "Request Quote",
+          openQuote: true,
+          icon: "contact",
         }}
         secondaryAction={{
           label: "Explore our services",

@@ -77,7 +77,7 @@ const SERVICE_CARDS: ShowcaseCard[] = [
     glowY: 0.35,
   },
   {
-    name: "Acrylic Fabrication & Joinery",
+    name: "Acrylic Fabrication",
     handle:
       "Premium acrylic displays, signage, and joinery crafted in-house for retail and exhibitions.",
     href: "/services/acrylic-fabrication",

@@ -10,6 +10,7 @@ import {
   buttonIconClasses,
   contactButtonIconClasses,
 } from "@/components/ui/button";
+import { useQuoteRequest } from "@/components/ui/QuoteRequestProvider";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
@@ -54,7 +55,8 @@ type HomeCtaProps = {
   description?: string;
   primaryAction?: {
     label: string;
-    href: string;
+    href?: string;
+    openQuote?: boolean;
     icon?: "contact" | "arrow";
   };
   whatsappMessage?: string;
@@ -64,12 +66,14 @@ export default function HomeCta({
   title,
   description,
   primaryAction = {
-    label: "Contact us",
-    href: "/contact",
+    label: "Request Quote",
+    openQuote: true,
     icon: "contact",
   },
   whatsappMessage,
 }: HomeCtaProps) {
+  const { openQuoteRequest } = useQuoteRequest();
+
   return (
     <section id="contact-cta" className="w-full bg-canvas">
       <RevealSection className="relative mx-auto max-w-7xl overflow-hidden border-x border-hairline border-y">
@@ -94,17 +98,32 @@ export default function HomeCta({
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:mt-12 sm:flex-row">
-            <Link
-              href={primaryAction.href}
-              className={accentButtonClasses("group w-full sm:w-auto")}
-            >
-              {primaryAction.label}
-              {primaryAction.icon === "arrow" ? (
-                <ArrowUpRightIcon className={buttonIconClasses} />
-              ) : (
-                <MessageForwardIcon className={contactButtonIconClasses} />
-              )}
-            </Link>
+            {primaryAction.openQuote || !primaryAction.href ? (
+              <button
+                type="button"
+                onClick={() => openQuoteRequest()}
+                className={accentButtonClasses("group w-full sm:w-auto")}
+              >
+                {primaryAction.label}
+                {primaryAction.icon === "arrow" ? (
+                  <ArrowUpRightIcon className={buttonIconClasses} />
+                ) : (
+                  <MessageForwardIcon className={contactButtonIconClasses} />
+                )}
+              </button>
+            ) : (
+              <Link
+                href={primaryAction.href}
+                className={accentButtonClasses("group w-full sm:w-auto")}
+              >
+                {primaryAction.label}
+                {primaryAction.icon === "arrow" ? (
+                  <ArrowUpRightIcon className={buttonIconClasses} />
+                ) : (
+                  <MessageForwardIcon className={contactButtonIconClasses} />
+                )}
+              </Link>
+            )}
 
             <a
               href={getWhatsAppUrl(whatsappMessage)}

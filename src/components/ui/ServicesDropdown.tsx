@@ -33,11 +33,11 @@ const COLUMN_DEFS: { title: string; ids: string[] }[] = [
     ids: ["exhibition-stand", "printing", "acrylic-fabrication"],
   },
   {
-    title: "Brand",
+    title: "Merchandise",
     ids: ["corporate-gifts", "rider-equipment"],
   },
   {
-    title: "Experience",
+    title: "Digital & Events",
     ids: ["creative-agency", "event-management"],
   },
 ];

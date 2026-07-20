@@ -4,14 +4,12 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { Box, Laptop, Printer, Sparkles } from "lucide-react";
 import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
-import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import {
-  accentButtonClasses,
   softButtonClasses,
-  contactButtonIconClasses,
   buttonIconClasses,
 } from "@/components/ui/button";
 import PastelIconBox from "@/components/ui/PastelIconBox";
+import RequestQuoteButton from "@/components/ui/RequestQuoteButton";
 import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 
@@ -143,13 +141,7 @@ export default function HomeWhyBaharnani() {
           animationNum={2}
           className="relative z-10 mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <Link
-            href="/contact"
-            className={accentButtonClasses("group w-full sm:w-auto")}
-          >
-            Request a quote
-            <MessageForwardIcon className={contactButtonIconClasses} />
-          </Link>
+          <RequestQuoteButton />
           <Link
             href="/about"
             className={softButtonClasses("group w-full sm:w-auto")}

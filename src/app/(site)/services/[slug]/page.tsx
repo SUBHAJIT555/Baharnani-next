@@ -1,21 +1,11 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
-import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import { PageHero } from "@/components/PageHero";
 import ServiceDetailLayout from "@/components/pages/services/ServiceDetailLayout";
-import {
-  accentButtonClasses,
-  softButtonClasses,
-  contactButtonIconClasses,
-  buttonIconClasses,
-} from "@/components/ui/button";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { getServicePageContent } from "@/lib/service-pages";
 import { getServiceBySlug, SERVICES } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
-import { cn } from "@/lib/utils";
 
 type ServicePageProps = {
   params: Promise<{ slug: string }>;
@@ -58,32 +48,32 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         eyebrowIcon="briefcase"
         title={service.title}
         description={service.description}
-      >
-        <div className="flex flex-wrap gap-3">
-          {service.externalUrl ? (
-            <a
-              href={service.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(accentButtonClasses("group w-full sm:w-auto"), "gap-2")}
-            >
-              Visit dedicated site
-              <ArrowUpRightIcon className={buttonIconClasses} />
-            </a>
-          ) : null}
-          <Link
-            href="/contact"
-            className={
-              service.externalUrl
-                ? softButtonClasses("group w-full sm:w-auto")
-                : accentButtonClasses("group w-full sm:w-auto")
-            }
-          >
-            Request a quote
-            <MessageForwardIcon className={contactButtonIconClasses} />
-          </Link>
-        </div>
-      </PageHero>
+        primaryAction={
+          service.externalUrl
+            ? {
+                label: "Visit dedicated site",
+                href: service.externalUrl,
+                icon: "arrow",
+              }
+            : {
+                label: "Request a quote",
+                openQuote: true,
+                quoteServiceId: service.slug,
+                icon: "contact",
+              }
+        }
+        secondaryAction={
+          service.externalUrl
+            ? {
+                label: "Request a quote",
+                openQuote: true,
+                quoteServiceId: service.slug,
+                icon: "contact",
+                variant: "soft",
+              }
+            : undefined
+        }
+      />
 
       <SectionDivider />
 

@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="inline-flex items-center rounded-lg border border-dashed border-hairline bg-surface-card px-3 py-1 text-caption font-medium text-body">
+    <h3 className="flex items-center gap-2 text-sm font-medium text-muted">
+      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-ink" aria-hidden />
       {children}
     </h3>
   );

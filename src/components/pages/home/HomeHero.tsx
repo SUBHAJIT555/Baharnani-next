@@ -4,11 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Box, Gift, Laptop } from "lucide-react";
 import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
-import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import {
-  accentButtonClasses,
   softButtonClasses,
-  contactButtonIconClasses,
   buttonIconClasses,
 } from "@/components/ui/button";
 import {
@@ -17,6 +14,7 @@ import {
 } from "@/components/ui/ExternalSiteNoticeModal";
 import PastelIconBox from "@/components/ui/PastelIconBox";
 import GoogleRatingBadge from "@/components/ui/GoogleRatingBadge";
+import RequestQuoteButton from "@/components/ui/RequestQuoteButton";
 import { ShimmeringText } from "@/components/shimmering-text";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { cn } from "@/lib/utils";
@@ -275,13 +273,7 @@ export default function HomeHero() {
             animationNum={2}
             className="relative z-10 mt-8 flex w-full flex-wrap items-center justify-center gap-3"
           >
-            <Link
-              href="/contact"
-              className={accentButtonClasses("group w-full sm:w-auto")}
-            >
-              Request a quote
-              <MessageForwardIcon className={contactButtonIconClasses} />
-            </Link>
+            <RequestQuoteButton />
             <Link
               href="/services"
               className={softButtonClasses("group w-full sm:w-auto")}

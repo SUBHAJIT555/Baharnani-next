@@ -4,21 +4,11 @@ import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
+import { QUOTE_SERVICE_OPTIONS } from "@/lib/quote-services";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-const SERVICE_OPTIONS = [
-  { id: "exhibition-stand", label: "Exhibition Stand" },
-  { id: "corporate-gifts", label: "Corporate Gifts" },
-  { id: "printing", label: "Printing Services" },
-  { id: "rider-equipment", label: "Rider Equipment" },
-  { id: "acrylic-fabrication", label: "Acrylic Fabrication & Joinery" },
-  { id: "event-management", label: "Event Management" },
-  { id: "website-development", label: "Website Development" },
-  { id: "mobile-app-development", label: "Mobile App Development" },
-  { id: "exhibition-kiosk", label: "Exhibition Kiosk" },
-  { id: "other", label: "Other" },
-];
+const SERVICE_OPTIONS = QUOTE_SERVICE_OPTIONS;
 
 const fieldClass = cn(
   "w-full rounded-lg border border-hairline bg-canvas px-3.5 py-2.5",

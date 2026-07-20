@@ -31,7 +31,8 @@ export default function ServiceDetailLayout({
         description={content.hero.description}
         primaryAction={{
           label: "Request a quote",
-          href: "/contact",
+          openQuote: true,
+          quoteServiceId: content.slug,
           icon: "contact",
         }}
         secondaryAction={{
@@ -66,7 +67,7 @@ export default function ServiceDetailLayout({
             description={content.cta.description}
             primaryAction={{
               label: content.cta.primaryLabel ?? "Request a quote",
-              href: "/contact",
+              openQuote: true,
               icon: "contact",
             }}
             whatsappMessage={whatsappMessage}

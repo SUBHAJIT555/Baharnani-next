@@ -49,7 +49,7 @@ export const SERVICES: ServiceItem[] = [
       "Branded rider equipment for visibility, comfort, and lasting impressions.",
   },
   {
-    title: "Acrylic Fabrication & Joinery",
+    title: "Acrylic Fabrication",
     slug: "acrylic-fabrication",
     href: "/services/acrylic-fabrication",
     description:

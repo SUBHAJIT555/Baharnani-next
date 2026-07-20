@@ -40,7 +40,7 @@ const MENU_ITEMS: MenuItem[] = [
   { key: 1, name: "Home", href: "/" },
   { key: 2, name: "About", href: "/about" },
   { key: 3, name: "Services", href: "/services", hasDropdown: true },
-  { key: 4, name: "Blog", href: "/blog" },
+  { key: 4, name: "Blogs", href: "/blog" },
 ];
 
 const SERVICE_META: Record<

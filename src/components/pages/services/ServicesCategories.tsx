@@ -158,7 +158,7 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
   {
     slug: "acrylic-fabrication",
     href: "/services/acrylic-fabrication",
-    heading: "Acrylic Fabrication & Joinery",
+    heading: "Acrylic Fabrication",
     paragraph: (
       <>
         Precision <Em>acrylic displays</Em>, illuminated letters, counters, and{" "}

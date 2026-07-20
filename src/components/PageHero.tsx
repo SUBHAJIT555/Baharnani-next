@@ -22,6 +22,7 @@ import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import { WhatsAppOutlineIcon } from "@/components/icons/WhatsAppIcon";
 import MagicRings from "@/components/ui/MagicRings";
 import { SectionEyebrow } from "@/components/ui/Section";
+import { useQuoteRequest } from "@/components/ui/QuoteRequestProvider";
 import {
   accentButtonClasses,
   buttonIconClasses,
@@ -54,9 +55,13 @@ export type PageHeroIcon = keyof typeof ICONS;
 
 export type PageHeroAction = {
   label: string;
-  href: string;
+  href?: string;
+  /** Opens the sitewide quote request modal instead of navigating. */
+  openQuote?: boolean;
   variant?: ButtonVariant;
   icon?: "arrow" | "contact" | "whatsapp";
+  /** Pre-select a service checkbox when opening the quote modal. */
+  quoteServiceId?: string;
 };
 
 export type PageHeroProps = {
@@ -182,8 +187,8 @@ function actionButtonClasses(variant: ButtonVariant = "dark") {
 }
 
 function PageHeroActionLink({ action }: { action: PageHeroAction }) {
+  const { openQuoteRequest } = useQuoteRequest();
   const variant = action.variant ?? "accent";
-  const isExternal = /^https?:\/\//.test(action.href);
   const icon =
     action.icon === "contact" ? (
       <MessageForwardIcon className={contactButtonIconClasses} />
@@ -195,10 +200,26 @@ function PageHeroActionLink({ action }: { action: PageHeroAction }) {
 
   const className = actionButtonClasses(variant);
 
+  if (action.openQuote) {
+    return (
+      <button
+        type="button"
+        onClick={() => openQuoteRequest(action.quoteServiceId)}
+        className={className}
+      >
+        {action.label}
+        {icon}
+      </button>
+    );
+  }
+
+  const href = action.href ?? "/contact";
+  const isExternal = /^https?:\/\//.test(href);
+
   if (isExternal) {
     return (
       <a
-        href={action.href}
+        href={href}
         target="_blank"
         rel="noopener noreferrer"
         className={className}
@@ -210,7 +231,7 @@ function PageHeroActionLink({ action }: { action: PageHeroAction }) {
   }
 
   return (
-    <Link href={action.href} className={className}>
+    <Link href={href} className={className}>
       {action.label}
       {icon}
     </Link>
@@ -301,7 +322,10 @@ export function PageHero({
                     variant: primaryAction.variant ?? "accent",
                     icon:
                       primaryAction.icon ??
-                      (primaryAction.href === "/contact" ? "contact" : "arrow"),
+                      (primaryAction.openQuote ||
+                      primaryAction.href === "/contact"
+                        ? "contact"
+                        : "arrow"),
                   }}
                 />
               ) : null}
