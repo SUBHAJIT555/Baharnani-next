@@ -143,6 +143,9 @@ export default function ServiceOfferings({ content }: ServiceOfferingsProps) {
                   </ul>
                 </Reveal>
 
+
+                
+
                 <Reveal
                   animationNum={index * 2 + 2}
                   className="relative aspect-4/3 w-full lg:aspect-auto lg:h-80 xl:h-96"
