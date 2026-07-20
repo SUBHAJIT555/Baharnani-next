@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
+  Bike,
   Briefcase,
   Building2,
+  CalendarDays,
   Cookie,
   FileText,
   Layers,
@@ -32,8 +34,10 @@ import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { cn } from "@/lib/utils";
 
 const ICONS = {
+  bike: Bike,
   briefcase: Briefcase,
   building: Building2,
+  calendar: CalendarDays,
   cookie: Cookie,
   file: FileText,
   layers: Layers,

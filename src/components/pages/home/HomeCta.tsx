@@ -57,6 +57,7 @@ type HomeCtaProps = {
     href: string;
     icon?: "contact" | "arrow";
   };
+  whatsappMessage?: string;
 };
 
 export default function HomeCta({
@@ -67,6 +68,7 @@ export default function HomeCta({
     href: "/contact",
     icon: "contact",
   },
+  whatsappMessage,
 }: HomeCtaProps) {
   return (
     <section id="contact-cta" className="w-full bg-canvas">
@@ -105,7 +107,7 @@ export default function HomeCta({
             </Link>
 
             <a
-              href={getWhatsAppUrl()}
+              href={getWhatsAppUrl(whatsappMessage)}
               target="_blank"
               rel="noopener noreferrer"
               className={whatsappButtonClasses}

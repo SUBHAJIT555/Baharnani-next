@@ -1,6 +1,9 @@
 "use client";
 
+import HomeCta from "@/components/pages/home/HomeCta";
 import { PageHero } from "@/components/PageHero";
+import ServiceAbout from "@/components/pages/services/ServiceAbout";
+import ServiceOfferings from "@/components/pages/services/ServiceOfferings";
 import SectionDivider from "@/components/ui/SectionDivider";
 import type { ServicePageContent } from "@/lib/service-pages";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
@@ -12,9 +15,10 @@ type ServiceDetailLayoutProps = {
 export default function ServiceDetailLayout({
   content,
 }: ServiceDetailLayoutProps) {
-  const whatsappMessage = `Hello! I'm interested in ${content.hero.title}${
+  const serviceLabel = `${content.hero.title}${
     content.hero.titleAccent ? ` ${content.hero.titleAccent}` : ""
-  }.`;
+  }`;
+  const whatsappMessage = `Hello! I'm interested in ${serviceLabel}.`;
 
   return (
     <main className="w-full overflow-x-hidden">
@@ -38,6 +42,38 @@ export default function ServiceDetailLayout({
         }}
       />
       <SectionDivider />
+      <ServiceAbout content={content.about} />
+      <SectionDivider />
+      {content.offerings ? (
+        <>
+          <ServiceOfferings content={content.offerings} />
+          <SectionDivider />
+        </>
+      ) : null}
+      {content.cta ? (
+        <>
+          <HomeCta
+            title={
+              <>
+                {content.cta.title}{" "}
+                {content.cta.titleAccent ? (
+                  <span className="text-brand-accent">
+                    {content.cta.titleAccent}
+                  </span>
+                ) : null}
+              </>
+            }
+            description={content.cta.description}
+            primaryAction={{
+              label: content.cta.primaryLabel ?? "Request a quote",
+              href: "/contact",
+              icon: "contact",
+            }}
+            whatsappMessage={whatsappMessage}
+          />
+          <SectionDivider />
+        </>
+      ) : null}
     </main>
   );
 }
