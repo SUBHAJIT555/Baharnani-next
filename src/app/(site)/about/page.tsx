@@ -4,6 +4,7 @@ import AboutWhyChooseUs from "@/components/pages/about/AboutWhyChooseUs";
 import HomeCta from "@/components/pages/home/HomeCta";
 import HomeTestimonials from "@/components/pages/home/HomeTestimonials";
 import { PageHero } from "@/components/PageHero";
+import ClientLogosShowcase from "@/components/ui/ClientLogosShowcase";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { pageMetadata } from "@/lib/seo";
 
@@ -35,6 +36,8 @@ export default function AboutPage() {
       <SectionDivider />
 
       <AboutSection />
+      <SectionDivider />
+      <ClientLogosShowcase />
       <SectionDivider />
       <AboutStats />
       <SectionDivider />

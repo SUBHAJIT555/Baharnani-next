@@ -1,9 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { Sparkles } from "lucide-react";
+import { RatingBadge } from "@/components/ui/RatingBadge";
 import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
+import { SITE } from "@/lib/site";
 
 export default function AboutSection() {
   return (
@@ -52,15 +53,47 @@ export default function AboutSection() {
           <Reveal
             animationNum={1}
             as="article"
-            className="relative flex min-h-[220px] items-center justify-center p-6 md:col-span-1 md:min-h-[320px] md:p-6"
+            className="relative flex min-h-64 flex-col items-center justify-center gap-5 overflow-hidden px-6 py-12 md:col-span-1 md:min-h-full md:px-8 md:py-14"
           >
-            <Image
-              src="/images/HomePage/brand-deal.svg"
-              alt="Baharnani partnership and brand collaboration"
-              fill
-              className="object-contain p-4 md:p-8"
-              sizes="(max-width: 768px) 100vw, 50vw"
+            <div
+              className="pointer-events-none absolute inset-0 z-0"
+              aria-hidden
+              style={{
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 70% 65% at 50% 50%, black 20%, transparent 75%)",
+                backgroundImage:
+                  "radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--primary) 32%, transparent) 1px, transparent 0)",
+                backgroundSize: "12px 12px",
+                maskImage:
+                  "radial-gradient(ellipse 70% 65% at 50% 50%, black 20%, transparent 75%)",
+                opacity: 0.30,
+              }}
             />
+
+            <div className="relative z-10 flex flex-col items-center gap-5 text-center">
+              <p className="text-caption font-medium tracking-wide text-muted uppercase">
+                Trusted by clients
+              </p>
+
+              <a
+                href={SITE.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-opacity hover:opacity-85"
+                aria-label={`${SITE.googleRating} star rating on Google — view our reviews`}
+              >
+                <RatingBadge
+                  rating={SITE.googleRating}
+                  title={`${SITE.googleRating} on Google`}
+                  subtitle="Google reviews"
+                  className="scale-110 sm:scale-125"
+                />
+              </a>
+
+              <p className="max-w-56 text-sm leading-relaxed text-muted">
+                Rated by Dubai &amp; UAE brands who work with us end to end.
+              </p>
+            </div>
           </Reveal>
         </div>
       </RevealSection>

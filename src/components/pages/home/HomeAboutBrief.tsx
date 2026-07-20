@@ -1,25 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { ClientLogo } from "@/components/ui/ClientLogo";
-import { LogosCarousel } from "@/components/ui/logos-carousel";
+import ClientLogosShowcase from "@/components/ui/ClientLogosShowcase";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { cn } from "@/lib/utils";
-
-const CLIENT_LOGOS = [
-  { src: "/images/clients/fab.webp", alt: "FAB", name: "FAB" },
-  { src: "/images/clients/himalaya.webp", alt: "Himalaya", name: "Himalaya" },
-  { src: "/images/clients/talabat.webp", alt: "Talabat", name: "Talabat" },
-  { src: "/images/clients/careem.webp", alt: "Careem", name: "Careem" },
-  { src: "/images/clients/imperial.webp", alt: "Imperial", name: "Imperial" },
-  { src: "/images/clients/rently.webp", alt: "Rently", name: "Rently" },
-  { src: "/images/clients/rit.webp", alt: "RIT", name: "RIT" },
-  {
-    src: "/images/clients/tradeling.webp",
-    alt: "Tradeling",
-    name: "Tradeling",
-  },
-] as const;
 
 const CLIENT_FAQ = [
   {
@@ -131,7 +115,7 @@ export default function HomeAboutBrief() {
             <Reveal
               animationNum={1}
               as="article"
-              className="relative flex min-h-[220px] items-center justify-center p-6 md:min-h-[280px] md:p-8"
+              className="relative flex min-h-55 items-center justify-center p-6 md:min-h-70 md:p-8"
             >
               <Image
                 src="/images/HomePage/brand-deal.svg"
@@ -143,40 +127,7 @@ export default function HomeAboutBrief() {
             </Reveal>
           </div>
 
-          <Reveal
-            animationNum={2}
-            as="article"
-            className="px-5 py-8 sm:px-6 md:px-8 md:py-10"
-          >
-            <p className="text-body-md font-medium text-ink sm:text-[17px] sm:leading-7">
-              Today&apos;s marketing and ops teams across the UAE look for
-              partners with hands-on expertise trusted by leading brands:
-            </p>
-
-            <div className="relative mt-6">
-              <div
-                className="pointer-events-none absolute inset-0 grid grid-cols-2 lg:grid-cols-4"
-                aria-hidden
-              >
-                <div className="border-r border-dashed border-hairline" />
-                <div className="hidden border-r border-dashed border-hairline lg:block" />
-                <div className="hidden border-r border-dashed border-hairline lg:block" />
-              </div>
-
-              <LogosCarousel
-                columnCount={4}
-                className="py-2 sm:py-3 [--column-count:2] lg:[--column-count:4]"
-              >
-                {CLIENT_LOGOS.map((brand) => (
-                  <ClientLogo
-                    key={brand.name}
-                    src={brand.src}
-                    alt={brand.alt}
-                  />
-                ))}
-              </LogosCarousel>
-            </div>
-          </Reveal>
+          <ClientLogosShowcase standalone={false} />
 
           <Reveal
             animationNum={3}

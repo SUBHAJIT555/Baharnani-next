@@ -106,7 +106,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           />
 
           <motion.aside
-            className="mobile-menu-panel absolute top-0 right-0 flex h-dvh w-full max-w-[420px] flex-col overflow-hidden border-l border-hairline bg-canvas"
+            className="mobile-menu-panel absolute top-0 right-0 flex h-dvh w-full max-w-105 flex-col overflow-hidden border-l border-hairline bg-canvas"
             style={{ touchAction: "pan-y" }}
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -244,7 +244,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         >
                           {active ? (
                             <span
-                              className="absolute top-1/2 left-0 h-5 w-[3px] -translate-y-1/2 rounded-full bg-brand-accent"
+                              className="absolute top-1/2 left-0 h-5 w-0.75 -translate-y-1/2 rounded-full bg-brand-accent"
                               aria-hidden
                             />
                           ) : null}

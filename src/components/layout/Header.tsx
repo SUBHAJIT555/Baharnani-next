@@ -152,7 +152,7 @@ export default function Header() {
               title="Chat on WhatsApp"
               className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-transparent text-body transition-colors hover:bg-surface-soft hover:text-ink"
             >
-              <WhatsAppOutlineIcon className="size-[18px]" />
+              <WhatsAppOutlineIcon className="size-4.5" />
             </a>
             <ThemeToggle variant="subtle" />
             <motion.button

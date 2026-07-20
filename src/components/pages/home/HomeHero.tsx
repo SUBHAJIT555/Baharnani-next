@@ -167,7 +167,7 @@ function FeatureTab({
             style={{ background: activeDarkBg }}
             aria-hidden
           />
-          <div className="absolute top-0 left-0 z-1 h-[2px] w-full">
+          <div className="absolute top-0 left-0 z-1 h-0.5 w-full">
             <div
               className="h-full bg-brand-accent transition-all duration-100 ease-linear"
               style={{ width: `${progress}%` }}
@@ -293,7 +293,7 @@ export default function HomeHero() {
         </RevealSection>
 
         {/* Active service — grows on small screens so copy is not clipped */}
-        <div className="relative min-h-[320px] overflow-hidden border-y border-hairline sm:min-h-[300px] lg:min-h-[280px]">
+        <div className="relative min-h-80 overflow-hidden border-y border-hairline sm:min-h-75 lg:min-h-70">
           <div
             className="absolute inset-0 z-0 block dark:hidden transition-[background] duration-500"
             style={{ background: activeSlide.activeLightBg }}
