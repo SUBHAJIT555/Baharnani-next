@@ -12,12 +12,11 @@ const map = new DottedMap({ height: 58, grid: "diagonal" });
 const points = map.getPoints();
 const { width, height } = map.image;
 const dubaiPin = map.getPin(DUBAI);
+const pinLeft = dubaiPin ? `${(dubaiPin.x / width) * 100}%` : "72%";
+const pinTop = dubaiPin ? `${(dubaiPin.y / height) * 100}%` : "42%";
 
 export default function ContactWorldMap({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
-
-  const left = `${(dubaiPin.x / width) * 100}%`;
-  const top = `${(dubaiPin.y / height) * 100}%`;
 
   return (
     <div className={cn("relative mx-auto w-full max-w-4xl", className)}>
@@ -40,7 +39,7 @@ export default function ContactWorldMap({ className }: { className?: string }) {
 
       <div
         className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
-        style={{ left, top }}
+        style={{ left: pinLeft, top: pinTop }}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
         onFocus={() => setOpen(true)}
