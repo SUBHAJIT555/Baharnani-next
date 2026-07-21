@@ -88,6 +88,7 @@ export const SITE = {
   shortName: "Baharnani",
   email: "info@baharnani.com",
   phone: "+971 52 624 0517",
+  whatsappNumber: "971526240517",
   address: "Sheikh Zayed Road – Dubai",
   url: "https://baharnani.com",
   googleRating: 4.9,

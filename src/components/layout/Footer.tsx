@@ -37,9 +37,7 @@ function FooterLink({
   children: React.ReactNode;
   external?: boolean;
 }) {
-  const icon = (
-    <ArrowUpRightIcon className={footerLinkIconClass} />
-  );
+  const icon = <ArrowUpRightIcon className={footerLinkIconClass} />;
 
   if (external) {
     return (
@@ -140,10 +138,19 @@ export default function Footer() {
                 </FooterLink>
               </li>
               <li>
-                <FooterLink href={`tel:${SITE.phone.replace(/\s/g, "")}`} external>
+                <FooterLink href={`wa.me:${SITE.whatsappNumber}`} external>
+                  WhatsApp
+                </FooterLink>
+              </li>
+              <li>
+                <FooterLink
+                  href={`tel:${SITE.phone.replace(/\s/g, "")}`}
+                  external
+                >
                   {SITE.phone}
                 </FooterLink>
               </li>
+             
             </ul>
           </div>
 
@@ -151,12 +158,18 @@ export default function Footer() {
             <FooterHeading>Social</FooterHeading>
             <ul className="space-y-2 text-body-sm">
               <li>
-                <FooterLink href="https://www.facebook.com/BAHARNANIADV" external>
+                <FooterLink
+                  href="https://www.facebook.com/BAHARNANIADV"
+                  external
+                >
                   Facebook
                 </FooterLink>
               </li>
               <li>
-                <FooterLink href="https://www.instagram.com/baharnaniadv/" external>
+                <FooterLink
+                  href="https://www.instagram.com/baharnaniadv/"
+                  external
+                >
                   Instagram
                 </FooterLink>
               </li>
@@ -166,6 +179,14 @@ export default function Footer() {
                   external
                 >
                   LinkedIn
+                </FooterLink>
+              </li>
+              <li>
+                <FooterLink
+                  href="https://x.com/BaharnaniL78749"
+                  external
+                >
+                  X (formerly Twitter)
                 </FooterLink>
               </li>
             </ul>
