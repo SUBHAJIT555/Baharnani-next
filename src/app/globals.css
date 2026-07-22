@@ -38,7 +38,9 @@
     --badge-violet: #8b5cf6;
     --badge-emerald: #34d399;
 
-    --scrollbar-size: 10px;
+    --logo-tile-light: #ffffff;
+    --logo-tile-dark: #141414;
+    --logo-tile-dot: #111111;
     --scrollbar-track: transparent;
     --scrollbar-thumb: var(--brand-accent);
     --scrollbar-thumb-hover: #2563eb;
@@ -86,6 +88,10 @@
 
     --scrollbar-thumb: var(--brand-accent);
     --scrollbar-thumb-hover: #60a5fa;
+
+    --logo-tile-light: #ffffff;
+    --logo-tile-dark: #141414;
+    --logo-tile-dot: #ffffff;
   }
 
   /* Circle-blur theme switch — @ncdai/theme-toggle-effect-circle-blur */
@@ -159,6 +165,8 @@
   --color-badge-pink: var(--badge-pink);
   --color-badge-violet: var(--badge-violet);
   --color-badge-emerald: var(--badge-emerald);
+  --color-logo-tile-light: var(--logo-tile-light);
+  --color-logo-tile-dark: var(--logo-tile-dark);
 
   --radius-xs: 4px;
   --radius-sm: 6px;
