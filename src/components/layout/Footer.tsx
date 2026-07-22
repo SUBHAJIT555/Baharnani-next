@@ -64,8 +64,8 @@ function FooterLink({
 export default function Footer() {
   return (
     <footer className="w-full bg-canvas">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 border-x border-hairline px-5 pt-14 pb-8 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:pt-16 lg:pb-10">
-        <div className="space-y-6 sm:col-span-2 lg:col-span-1">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-8 border-x border-hairline px-5 pt-14 pb-8 sm:gap-10 sm:px-6 lg:grid-cols-4 lg:pt-16 lg:pb-10">
+        <div className="col-span-2 space-y-6 lg:col-span-1">
           <div className="space-y-4">
             <Link href="/" className="inline-flex">
               <BrandLogo className="w-36" width={180} />
@@ -123,7 +123,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="space-y-8">
+        <div className="col-span-2 grid grid-cols-2 gap-8 lg:col-span-1 lg:grid-cols-1 lg:gap-8">
           <div className="space-y-4">
             <FooterHeading>Contact</FooterHeading>
             <ul className="space-y-2 text-body-sm text-muted">
@@ -150,7 +150,6 @@ export default function Footer() {
                   {SITE.phone}
                 </FooterLink>
               </li>
-             
             </ul>
           </div>
 
@@ -197,12 +196,12 @@ export default function Footer() {
       <FooterAnimatedPrelude />
 
       <div className="border-t border-hairline">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 border-x border-hairline px-5 py-6 text-body-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-3 border-x border-hairline px-5 py-6 text-center text-body-sm text-muted sm:flex-row sm:gap-6 sm:px-6">
           <p>
             © {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
           <p>
-            developed with{" "}
+            Developed with{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

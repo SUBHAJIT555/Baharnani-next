@@ -111,7 +111,7 @@ export function ExternalSiteNoticeModal({
                     alt=""
                     width={28}
                     height={26}
-                    className="h-7 w-7"
+                    className="h-7 w-auto"
                   />
                 </div>
 

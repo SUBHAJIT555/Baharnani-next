@@ -6,11 +6,21 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
 import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons/ChevronIcon";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  MailShareIcon,
+  XTwitterIcon,
+} from "@/components/icons/SocialIcons";
+import { WhatsAppOutlineIcon } from "@/components/icons/WhatsAppIcon";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import BrandLogo from "@/components/ui/BrandLogo";
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import { accentButtonClasses, contactButtonIconClasses } from "@/components/ui/button";
+import { useQuoteRequest } from "@/components/ui/QuoteRequestProvider";
 import { SERVICES, SITE } from "@/lib/site";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
 type MobileMenuProps = {
@@ -52,6 +62,7 @@ function SocialIcon({
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
   const [servicesOpen, setServicesOpen] = useState(false);
+  const { openQuoteRequest } = useQuoteRequest();
 
   useEffect(() => {
     if (!isOpen) {
@@ -256,14 +267,17 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   })}
                 </div>
 
-                <Link
-                  href="/contact"
-                  onClick={onClose}
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    openQuoteRequest();
+                  }}
                   className={accentButtonClasses("group mt-6 h-12 w-full")}
                 >
-                  Contact us
+                  Request a quote
                   <MessageForwardIcon className={contactButtonIconClasses} />
-                </Link>
+                </button>
 
                 <div className="mt-6 flex items-center justify-between border-t border-hairline pt-4">
                   <span className="text-xs font-medium uppercase tracking-wider text-muted">
@@ -274,21 +288,33 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </nav>
 
               <div className="shrink-0 border-t border-hairline bg-canvas px-4 py-5 sm:px-6">
-                <div className="mb-4 flex items-center justify-center gap-4">
-                  <SocialIcon href="https://www.instagram.com/" label="Instagram">
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                      <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6" />
-                    </svg>
+                <div className="mb-4 flex flex-wrap items-center justify-center gap-4">
+                  <SocialIcon
+                    href="https://www.facebook.com/BAHARNANIADV"
+                    label="Facebook"
+                  >
+                    <FacebookIcon className="h-5 w-5" />
                   </SocialIcon>
-                  <SocialIcon href="https://www.facebook.com/" label="Facebook">
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                      <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4z" />
-                    </svg>
+                  <SocialIcon
+                    href="https://www.instagram.com/baharnaniadv/"
+                    label="Instagram"
+                  >
+                    <InstagramIcon className="h-5 w-5" />
                   </SocialIcon>
-                  <SocialIcon href="https://www.linkedin.com/" label="LinkedIn">
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                      <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002M7 8.48H3V21h4zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91z" />
-                    </svg>
+                  <SocialIcon
+                    href="https://www.linkedin.com/company/baharnaniadvertisingdubai/"
+                    label="LinkedIn"
+                  >
+                    <LinkedInIcon className="h-5 w-5" />
+                  </SocialIcon>
+                  <SocialIcon
+                    href="https://x.com/BaharnaniL78749"
+                    label="X (formerly Twitter)"
+                  >
+                    <XTwitterIcon className="h-5 w-5" />
+                  </SocialIcon>
+                  <SocialIcon href={getWhatsAppUrl()} label="WhatsApp">
+                    <WhatsAppOutlineIcon className="h-5 w-5" />
                   </SocialIcon>
                 </div>
 
@@ -296,12 +322,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   href={`mailto:${SITE.email}`}
                   className="mb-4 flex items-center justify-center gap-2 text-sm text-muted transition-colors hover:text-ink"
                 >
-                  <EmojiIcon emoji={EMOJI.mail} className="text-sm" />
+                  <MailShareIcon className="size-4 shrink-0" />
                   {SITE.email}
                 </a>
 
                 <p className="text-center text-xs text-muted">
-                  © {new Date().getFullYear()} {SITE.shortName}. All rights
+                  © {new Date().getFullYear()} {SITE.name}. All rights
                   reserved.
                 </p>
               </div>

@@ -18,8 +18,6 @@ const PANEL_TRANSITION = {
 };
 
 const SERVICE_FALLBACK_EMOJIS: Record<string, string> = {
-  "mobile-app-development": "📱",
-  "exhibition-kiosk": "🎮",
   other: "⋯",
 };
 
