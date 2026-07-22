@@ -2,50 +2,10 @@
 
 import type { HTMLAttributes } from "react";
 import Image from "next/image";
-import { EMOJI } from "@/components/icons/EmojiIcon";
-import {
-  BikeIcon,
-  BuildingPavilionIcon,
-  FileTypographyIcon,
-  LayersSelectedIcon,
-  type ServiceIconComponent,
-} from "@/components/icons/ServiceIcons";
 import { CheckItemText } from "@/components/ui/CheckItemText";
-import { FeaturedIcon } from "@/components/ui/FeaturedIcon";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
-import type {
-  ServiceOfferingIcon,
-  ServicePageContent,
-} from "@/lib/service-pages";
+import type { ServicePageContent } from "@/lib/service-pages";
 import { cn } from "@/lib/utils";
-
-const OFFERING_ICONS: Record<
-  ServiceOfferingIcon,
-  ServiceIconComponent | string
-> = {
-  printer: FileTypographyIcon,
-  shirt: "👕",
-  layers: LayersSelectedIcon,
-  cylinder: "🛢️",
-  flame: "🔥",
-  droplets: "💧",
-  sun: EMOJI.sun,
-  gem: "💎",
-  box: BuildingPavilionIcon,
-  bike: BikeIcon,
-  calendar: BuildingPavilionIcon,
-  sparkles: EMOJI.sparkles,
-  hardhat: "⛑️",
-  hand: "✋",
-  shield: EMOJI.shield,
-  "shield-check": EMOJI.shield,
-  bag: "👜",
-  uniform: "👔",
-  presentation: "📊",
-  rocket: "🚀",
-  users: "👥",
-  type: "🔤",
-};
 
 function AlternateImageMockup({
   className,
@@ -93,8 +53,8 @@ export default function ServiceOfferings({ content }: ServiceOfferingsProps) {
 
         <div className="mt-12 flex flex-col gap-12 sm:mt-16 sm:gap-16 md:mt-20 md:gap-20 lg:gap-24">
           {content.items.map((item, index) => {
-            const icon = OFFERING_ICONS[item.icon];
             const imageOnLeft = index % 2 === 1;
+            const serial = String(index + 1).padStart(2, "0");
 
             return (
               <div
@@ -108,14 +68,8 @@ export default function ServiceOfferings({ content }: ServiceOfferingsProps) {
                     imageOnLeft && "lg:order-last",
                   )}
                 >
-                  <FeaturedIcon
-                    icon={icon}
-                    size="lg"
-                    color="brand"
-                    theme="modern-neue"
-                  />
-                  <h3 className="mt-5 text-pretty text-xl font-semibold tracking-tight text-ink sm:text-2xl md:text-3xl">
-                    {item.title}
+                  <h3 className="text-pretty text-xl font-semibold tracking-tight text-ink sm:text-2xl md:text-3xl">
+                    <span className="text-muted">{serial}.</span> {item.title}
                   </h3>
                   <p className="mt-3 text-body-md leading-relaxed text-muted sm:text-[17px] sm:leading-7">
                     {item.description}
@@ -126,9 +80,6 @@ export default function ServiceOfferings({ content }: ServiceOfferingsProps) {
                     ))}
                   </ul>
                 </Reveal>
-
-
-                
 
                 <Reveal
                   animationNum={index * 2 + 2}

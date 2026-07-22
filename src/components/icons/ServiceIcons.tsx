@@ -112,6 +112,100 @@ export function BuildingWarehouseIcon(props: IconProps) {
   );
 }
 
+/** Why Us — Commercial print / graphics */
+export function TransformPointTopRightIcon(props: IconProps) {
+  return (
+    <TablerIcon {...props}>
+      <path d="M3 4a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -2" />
+      <path d="M3 18a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -2" />
+      <path
+        d="M17 4a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -2"
+        fill="currentColor"
+      />
+      <path d="M17 18a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -2" />
+      <path d="M11 5h2" />
+      <path d="M5 11v2" />
+      <path d="M19 11v2" />
+      <path d="M11 19h2" />
+    </TablerIcon>
+  );
+}
+
+/** Why Us — Acrylic / fabrication */
+export function BoxAlignBottomIcon(props: IconProps) {
+  return (
+    <TablerIcon {...props}>
+      <path d="M4 14h16v5a1 1 0 0 1 -1 1h-14a1 1 0 0 1 -1 -1v-5" />
+      <path d="M4 9v.01" />
+      <path d="M4 4v.01" />
+      <path d="M9 4v.01" />
+      <path d="M15 4v.01" />
+      <path d="M20 4v.01" />
+      <path d="M20 9v.01" />
+    </TablerIcon>
+  );
+}
+
+/** Why Us — Corporate gifts delivery */
+export function PackageExportIcon(props: IconProps) {
+  return (
+    <TablerIcon {...props}>
+      <path d="M12 21l-8 -4.5v-9l8 -4.5l8 4.5v4.5" />
+      <path d="M12 12l8 -4.5" />
+      <path d="M12 12v9" />
+      <path d="M12 12l-8 -4.5" />
+      <path d="M15 18h7" />
+      <path d="M19 15l3 3l-3 3" />
+    </TablerIcon>
+  );
+}
+
+/** Why Us — Venue map / installs */
+export function MapPin2Icon(props: IconProps) {
+  return (
+    <TablerIcon {...props}>
+      <path d="M12 18.5l-3 -1.5l-6 3v-13l6 -3l6 3l6 -3v7" />
+      <path d="M9 4v13" />
+      <path d="M15 7v5" />
+      <path d="M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879" />
+      <path d="M19 18v.01" />
+    </TablerIcon>
+  );
+}
+
+/** Why Us — Accountable team */
+export function UserCheckIcon(props: IconProps) {
+  return (
+    <TablerIcon {...props}>
+      <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+      <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
+      <path d="M15 19l2 2l4 -4" />
+    </TablerIcon>
+  );
+}
+
+/** Why Us — Colour control / artwork */
+export function ColorFilterIcon(props: IconProps) {
+  return (
+    <TablerIcon {...props}>
+      <path d="M13.58 13.79c.27 .68 .42 1.43 .42 2.21c0 1.77 -.77 3.37 -2 4.46a5.93 5.93 0 0 1 -4 1.54c-3.31 0 -6 -2.69 -6 -6c0 -2.76 1.88 -5.1 4.42 -5.79" />
+      <path d="M17.58 10.21c2.54 .69 4.42 3.03 4.42 5.79c0 3.31 -2.69 6 -6 6a5.93 5.93 0 0 1 -4 -1.54" />
+      <path d="M6 8a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
+    </TablerIcon>
+  );
+}
+
+/** Why Us — Strategy + production touchpoints */
+export function RouteSquare2Icon(props: IconProps) {
+  return (
+    <TablerIcon {...props}>
+      <path d="M14 5a2 2 0 0 0 -2 2v10a2 2 0 0 1 -2 2" />
+      <path d="M3 17h4v4h-4l0 -4" />
+      <path d="M17 3h4v4h-4l0 -4" />
+    </TablerIcon>
+  );
+}
+
 /** Why Baharnani — Dedicated team */
 export function Settings2Icon(props: IconProps) {
   return (

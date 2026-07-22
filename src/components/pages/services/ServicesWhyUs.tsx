@@ -1,47 +1,60 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
+import {
+  BoxAlignBottomIcon,
+  BuildingWarehouseIcon,
+  ColorFilterIcon,
+  MapPin2Icon,
+  PackageExportIcon,
+  RouteSquare2Icon,
+  TransformPointTopRightIcon,
+  UserCheckIcon,
+  type ServiceIconComponent,
+} from "@/components/icons/ServiceIcons";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { cn } from "@/lib/utils";
 
-type ListItem = { text: string; emoji: string };
+type ListItem = {
+  text: string;
+  Icon: ServiceIconComponent;
+};
 
 const PRODUCTION_ITEMS: ListItem[] = [
   {
-    text: "Exhibition stands designed, fabricated, and installed in-house",
-    emoji: EMOJI.box,
+    text: "Exhibition stands designed, fabricated, and installed in-house.",
+    Icon: BuildingWarehouseIcon,
   },
   {
-    text: "Commercial print, packaging, and large-format graphics under one roof",
-    emoji: EMOJI.printer,
+    text: "Commercial print, packaging, and large-format graphics under one roof.",
+    Icon: TransformPointTopRightIcon,
   },
   {
-    text: "Acrylic displays, joinery, and branded fabrication to spec",
-    emoji: "🏭",
+    text: "Acrylic displays, joinery, and branded fabrication to spec.",
+    Icon: BoxAlignBottomIcon,
   },
   {
-    text: "Corporate gifts curated, branded, and delivered UAE-wide",
-    emoji: EMOJI.gift,
+    text: "Corporate gifts curated, branded, and delivered UAE-wide.",
+    Icon: PackageExportIcon,
   },
 ];
 
 const DELIVERY_ITEMS: ListItem[] = [
   {
-    text: "Venue-ready installs at DWTC, ADNEC, Expo Centre, and corporate sites",
-    emoji: EMOJI.mapPin,
+    text: "Venue-ready installs at DWTC, ADNEC, Expo Centre, and corporate sites.",
+    Icon: MapPin2Icon,
   },
   {
-    text: "One accountable team from brief to show-floor and dismantle",
-    emoji: "👥",
+    text: "One accountable team from brief to show-floor and dismantle.",
+    Icon: UserCheckIcon,
   },
   {
-    text: "Tight timelines with colour control and shared artwork standards",
-    emoji: EMOJI.clock,
+    text: "Tight timelines with colour control and shared artwork standards.",
+    Icon: ColorFilterIcon,
   },
   {
-    text: "Strategy plus production—so branding stays consistent across every touchpoint",
-    emoji: EMOJI.sparkles,
+    text: "Strategy plus production—so branding stays consistent across every touchpoint.",
+    Icon: RouteSquare2Icon,
   },
 ];
 
@@ -185,28 +198,32 @@ function TopicCard({
       />
 
       <ul className="relative z-10 flex-1 space-y-3">
-        {items.map((item) => (
-          <li key={item.text} className="flex items-start gap-3">
-            <span
-              className={cn(
-                "mt-0.5 flex shrink-0 items-center justify-center",
-                featured ? "text-blue-400" : "text-brand-accent",
-              )}
-            >
-              <EmojiIcon emoji={item.emoji} className="text-lg sm:text-xl" />
-            </span>
-            <span
-              className={cn(
-                "pt-1 text-sm font-medium leading-relaxed md:text-base",
-                featured
-                  ? "text-zinc-100"
-                  : "text-body dark:text-zinc-100",
-              )}
-            >
-              {item.text}
-            </span>
-          </li>
-        ))}
+        {items.map((item) => {
+          const ItemIcon = item.Icon;
+
+          return (
+            <li key={item.text} className="flex items-start gap-3">
+              <span
+                className={cn(
+                  "mt-0.5 flex shrink-0 items-center justify-center",
+                  featured ? "text-blue-400" : "text-brand-accent",
+                )}
+              >
+                <ItemIcon className="size-5" />
+              </span>
+              <span
+                className={cn(
+                  "pt-1 text-sm font-medium leading-relaxed md:text-base",
+                  featured
+                    ? "text-zinc-100"
+                    : "text-body dark:text-zinc-100",
+                )}
+              >
+                {item.text}
+              </span>
+            </li>
+          );
+        })}
       </ul>
 
       {footer ? (

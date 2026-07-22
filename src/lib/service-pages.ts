@@ -130,7 +130,7 @@ export const PRINTING_SERVICE_PAGE: ServicePageContent = {
           "Precision and colour consistency on every job",
         ],
         icon: "printer",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/printing/offset-digital.webp",
         imageAlt: "Offset and digital printing production",
       },
       {
@@ -143,7 +143,7 @@ export const PRINTING_SERVICE_PAGE: ServicePageContent = {
           "Vibrant colour that holds up in daily use",
         ],
         icon: "shirt",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/printing/fabric.webp",
         imageAlt: "Fabric printing samples",
       },
       {
@@ -156,7 +156,7 @@ export const PRINTING_SERVICE_PAGE: ServicePageContent = {
           "Lasting quality built for repeated wear",
         ],
         icon: "layers",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/printing/screen.webp",
         imageAlt: "Screen printing work",
       },
       {
@@ -169,7 +169,7 @@ export const PRINTING_SERVICE_PAGE: ServicePageContent = {
           "Clean registration on curved surfaces",
         ],
         icon: "cylinder",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/printing/round.webp",
         imageAlt: "Round printing on cylindrical products",
       },
       {
@@ -182,7 +182,7 @@ export const PRINTING_SERVICE_PAGE: ServicePageContent = {
           "Sharp, long-lasting heat transfer finishes",
         ],
         icon: "flame",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/printing/heat-transfer.webp",
         imageAlt: "Heat transfer printing",
       },
       {
@@ -195,7 +195,7 @@ export const PRINTING_SERVICE_PAGE: ServicePageContent = {
           "Print-on-demand options for flexible runs",
         ],
         icon: "droplets",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/printing/sublimation.webp",
         imageAlt: "Sublimation printing samples",
       },
       {
@@ -208,7 +208,7 @@ export const PRINTING_SERVICE_PAGE: ServicePageContent = {
           "Durable finishes that stand out on display",
         ],
         icon: "sun",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/printing/uv.webp",
         imageAlt: "UV printing on hard surfaces",
       },
       {
@@ -221,7 +221,7 @@ export const PRINTING_SERVICE_PAGE: ServicePageContent = {
           "Precise, long-lasting engraved detail",
         ],
         icon: "gem",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/printing/metal-engraving.webp",
         imageAlt: "Metal engraving samples",
       },
     ],
@@ -285,7 +285,7 @@ export const RIDER_EQUIPMENT_SERVICE_PAGE: ServicePageContent = {
           "Durable finishes that keep your logo sharp",
         ],
         icon: "hardhat",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/rider-equipment/helmets.webp",
         imageAlt: "Branded rider helmets",
       },
       {
@@ -298,7 +298,7 @@ export const RIDER_EQUIPMENT_SERVICE_PAGE: ServicePageContent = {
           "Polished, professional look across the fleet",
         ],
         icon: "hand",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/rider-equipment/gloves.webp",
         imageAlt: "Branded rider gloves",
       },
       {
@@ -311,7 +311,7 @@ export const RIDER_EQUIPMENT_SERVICE_PAGE: ServicePageContent = {
           "Consistent brand visibility on every shift",
         ],
         icon: "shield",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/rider-equipment/knee-pads.webp",
         imageAlt: "Branded knee pads",
       },
       {
@@ -324,7 +324,7 @@ export const RIDER_EQUIPMENT_SERVICE_PAGE: ServicePageContent = {
           "Durable, high-impact logo placement",
         ],
         icon: "shield-check",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/rider-equipment/elbow-pads.webp",
         imageAlt: "Branded elbow pads",
       },
       {
@@ -337,7 +337,7 @@ export const RIDER_EQUIPMENT_SERVICE_PAGE: ServicePageContent = {
           "Cohesive branding across the full kit",
         ],
         icon: "shirt",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/rider-equipment/jacket-reflective-vest.webp",
         imageAlt: "Branded jackets and reflective vests",
       },
       {
@@ -350,7 +350,7 @@ export const RIDER_EQUIPMENT_SERVICE_PAGE: ServicePageContent = {
           "Durable construction for UAE fleet conditions",
         ],
         icon: "bag",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/rider-equipment/food-delivery-bags.webp",
         imageAlt: "Custom food delivery bags",
       },
       {
@@ -363,7 +363,7 @@ export const RIDER_EQUIPMENT_SERVICE_PAGE: ServicePageContent = {
           "Close collaboration from design to delivery",
         ],
         icon: "uniform",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/rider-equipment/rider-uniform.webp",
         imageAlt: "Custom rider uniforms",
       },
     ],
@@ -427,7 +427,7 @@ export const EVENT_MANAGEMENT_SERVICE_PAGE: ServicePageContent = {
           "Creative direction aligned to your brand",
         ],
         icon: "sparkles",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/event-management/developing-event-concept.webp",
         imageAlt: "Event concept development",
       },
       {
@@ -440,7 +440,7 @@ export const EVENT_MANAGEMENT_SERVICE_PAGE: ServicePageContent = {
           "Layouts that work for staging, AV, and flow",
         ],
         icon: "calendar",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/event-management/arranging-venues.webp",
         imageAlt: "Event venue arrangement",
       },
       {
@@ -453,7 +453,7 @@ export const EVENT_MANAGEMENT_SERVICE_PAGE: ServicePageContent = {
           "Formats for seminars, launches, and annual events",
         ],
         icon: "presentation",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/event-management/designing-events.webp",
         imageAlt: "Event design and planning",
       },
       {
@@ -466,7 +466,7 @@ export const EVENT_MANAGEMENT_SERVICE_PAGE: ServicePageContent = {
           "On-site AV operators when you need them",
         ],
         icon: "sun",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/event-management/setting-up-av.webp",
         imageAlt: "Event audio visual setup",
       },
       {
@@ -479,7 +479,7 @@ export const EVENT_MANAGEMENT_SERVICE_PAGE: ServicePageContent = {
           "Integration with branding and AV",
         ],
         icon: "box",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/event-management/setting-up-stages.webp",
         imageAlt: "Event stage setup",
       },
       {
@@ -492,7 +492,7 @@ export const EVENT_MANAGEMENT_SERVICE_PAGE: ServicePageContent = {
           "Cohesive look across the full venue",
         ],
         icon: "layers",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/event-management/event-branding.webp",
         imageAlt: "Event branding and graphics",
       },
       {
@@ -505,7 +505,7 @@ export const EVENT_MANAGEMENT_SERVICE_PAGE: ServicePageContent = {
           "Cueing and timing with the run-of-show",
         ],
         icon: "rocket",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/event-management/entertainment.webp",
         imageAlt: "Event entertainment",
       },
       {
@@ -518,7 +518,7 @@ export const EVENT_MANAGEMENT_SERVICE_PAGE: ServicePageContent = {
           "On-site direction for show-day execution",
         ],
         icon: "users",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/event-management/event-management.webp",
         imageAlt: "Full event management",
       },
     ],
@@ -582,7 +582,7 @@ export const ACRYLIC_FABRICATION_SERVICE_PAGE: ServicePageContent = {
           "Durable finishes for Dubai retail and corporate spaces",
         ],
         icon: "layers",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/acrylic-fabrication/acrylic-signage.webp",
         imageAlt: "Custom acrylic signage",
       },
       {
@@ -595,7 +595,7 @@ export const ACRYLIC_FABRICATION_SERVICE_PAGE: ServicePageContent = {
           "Functional designs for retail and corporate use",
         ],
         icon: "box",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/acrylic-fabrication/acrylic-boxes.webp",
         imageAlt: "Acrylic display and storage boxes",
       },
       {
@@ -608,7 +608,7 @@ export const ACRYLIC_FABRICATION_SERVICE_PAGE: ServicePageContent = {
           "Clean, elegant builds for maximum visibility",
         ],
         icon: "presentation",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/acrylic-fabrication/acrylic-stands.webp",
         imageAlt: "Acrylic display stands",
       },
       {
@@ -621,7 +621,7 @@ export const ACRYLIC_FABRICATION_SERVICE_PAGE: ServicePageContent = {
           "Indoor and outdoor wall displays built to last",
         ],
         icon: "type",
-        image: SERVICE_OFFERING_PLACEHOLDER_IMAGE,
+        image: "/images/services/acrylic-fabrication/acrylic-letter-cutout.webp",
         imageAlt: "Acrylic letter cutouts",
       },
     ],
