@@ -1,27 +1,10 @@
 "use client";
 
-import {
-  Bike,
-  CalendarDays,
-  CheckCircle,
-  Layers,
-  Printer,
-  Sparkles,
-  type LucideIcon,
-} from "lucide-react";
+import { EMOJI } from "@/components/icons/EmojiIcon";
 import { FeaturedIcon } from "@/components/ui/FeaturedIcon";
-import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
-import type { ServiceAboutIcon, ServicePageContent } from "@/lib/service-pages";
+import type { ServicePageContent } from "@/lib/service-pages";
 import { cn } from "@/lib/utils";
-
-const ABOUT_ICONS: Record<ServiceAboutIcon, LucideIcon> = {
-  printer: Printer,
-  bike: Bike,
-  calendar: CalendarDays,
-  layers: Layers,
-  sparkles: Sparkles,
-};
 
 type ServiceAboutProps = {
   content: ServicePageContent["about"];
@@ -29,7 +12,6 @@ type ServiceAboutProps = {
 
 export default function ServiceAbout({ content }: ServiceAboutProps) {
   const highlights = content.highlights ?? [];
-  const EyebrowIcon = ABOUT_ICONS[content.eyebrowIcon ?? "sparkles"];
 
   return (
     <section className="w-full bg-canvas">
@@ -44,13 +26,11 @@ export default function ServiceAbout({ content }: ServiceAboutProps) {
             animationNum={0}
             as="article"
             className={cn(
-              "px-5 py-10 sm:px-6 md:px-8 md:py-14",
+              "px-5 py-6 sm:px-6 md:px-8 md:py-6",
               highlights.length > 0 ? "md:col-span-2" : "md:mx-auto md:max-w-3xl",
             )}
           >
-            <SectionEyebrow icon={EyebrowIcon}>{content.eyebrow}</SectionEyebrow>
-
-            <h2 className="mt-5 text-pretty text-display-sm text-ink md:text-display-md">
+            <h2 className="text-pretty text-display-sm text-ink md:text-display-md">
               {content.title}
             </h2>
 
@@ -71,7 +51,7 @@ export default function ServiceAbout({ content }: ServiceAboutProps) {
             <Reveal
               animationNum={1}
               as="aside"
-              className="flex flex-col justify-center px-5 py-10 sm:px-6 md:col-span-1 md:px-7 md:py-14"
+              className="flex flex-col justify-center px-5 py-6 sm:px-6 md:col-span-1 md:px-7 md:py-6"
             >
               <p className="mb-5 text-caption font-medium tracking-wide text-muted uppercase">
                 Why Baharnani
@@ -82,7 +62,7 @@ export default function ServiceAbout({ content }: ServiceAboutProps) {
                   <li key={item.label} className="flex gap-3 py-4 first:pt-4 last:pb-4">
                     <FeaturedIcon
                       color="brand"
-                      icon={CheckCircle}
+                      icon={EMOJI.check}
                       theme="modern-neue"
                       size="sm"
                       className="mt-0.5"

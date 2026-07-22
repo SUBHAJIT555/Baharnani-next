@@ -1,5 +1,3 @@
-import { Shield } from "lucide-react";
-
 import { LegalDocument } from "@/components/pages/legal/LegalDocument";
 import {
   PRIVACY_UPDATED,
@@ -16,8 +14,6 @@ export const metadata = pageMetadata(
 export default function PrivacyPolicyPage() {
   return (
     <LegalDocument
-      eyebrow="Legal"
-      eyebrowIcon={Shield}
       title="Privacy Policy"
       description={`This Privacy Notice explains how ${SITE.name} processes your personal information when you use our Site and Services.`}
       updated={PRIVACY_UPDATED}

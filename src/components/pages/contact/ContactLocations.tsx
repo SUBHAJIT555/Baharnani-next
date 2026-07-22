@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Clock, MapPin } from "lucide-react";
+import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { SITE } from "@/lib/site";
 
@@ -55,9 +55,9 @@ export default function ContactLocations() {
             <Reveal animationNum={1} className="w-full">
               <div>
                 <div className="flex items-center gap-2.5">
-                  <MapPin
-                    className="size-4 shrink-0 text-brand-accent"
-                    aria-hidden
+                  <EmojiIcon
+                    emoji={EMOJI.mapPin}
+                    className="text-sm text-brand-accent"
                   />
                   <div className="min-w-0">
                     <h3 className="text-base font-semibold tracking-tight text-ink">
@@ -83,16 +83,16 @@ export default function ContactLocations() {
                     className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-brand-accent transition-colors hover:text-ink sm:text-sm"
                   >
                     Google Maps
-                    <ArrowUpRight className="size-3.5" />
+                    <EmojiIcon emoji={EMOJI.arrowUpRight} className="text-sm" />
                   </a>
                 </div>
 
                 <div className="my-3 border-t border-dashed border-hairline" />
 
                 <div className="flex items-start gap-2.5">
-                  <Clock
-                    className="mt-0.5 size-4 shrink-0 text-brand-accent"
-                    aria-hidden
+                  <EmojiIcon
+                    emoji={EMOJI.clock}
+                    className="mt-0.5 text-sm text-brand-accent"
                   />
                   <div className="min-w-0 flex-1">
                     <p className="text-[10px] font-semibold tracking-wide text-muted uppercase">

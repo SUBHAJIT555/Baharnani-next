@@ -1,13 +1,11 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 
 const REASONS = [
@@ -48,10 +46,7 @@ export default function AboutWhyChooseUs() {
     <section id="why-choose-us" className="w-full scroll-mt-24 bg-canvas">
       <RevealSection className="mx-auto max-w-7xl border-x border-hairline px-5 py-12 sm:px-6 sm:py-14 md:px-8 md:py-16">
         <Reveal animationNum={0} className="mx-auto max-w-2xl text-center">
-          <SectionEyebrow icon={Sparkles} className="mx-auto">
-            Why choose us
-          </SectionEyebrow>
-          <h2 className="mt-5 text-pretty text-display-sm text-ink md:text-display-md">
+          <h2 className="text-pretty text-display-sm text-ink md:text-display-md">
             Why brands choose Baharnani
           </h2>
           <p className="mt-4 text-body-md text-muted sm:text-[17px] sm:leading-7">

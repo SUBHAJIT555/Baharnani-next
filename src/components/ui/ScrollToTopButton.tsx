@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowUp } from "lucide-react";
+import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
 import { cn } from "@/lib/utils";
 
 const PROGRESS_RADIUS = 46;
@@ -127,7 +127,7 @@ export default function ScrollToTopButton() {
             "dark:shadow-[0_4px_16px_-6px_rgba(0,0,0,0.45)]",
           )}
         >
-          <ArrowUp className="size-4 lg:size-5" strokeWidth={2.25} />
+          <EmojiIcon emoji={EMOJI.arrowUp} className="text-sm lg:text-base" />
         </span>
       </button>
     </div>

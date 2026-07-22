@@ -1,37 +1,39 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
-import {
-  Bike,
-  Box,
-  Gift,
-  Laptop,
-  Layers,
-  Printer,
-} from "lucide-react";
+import { useState, type ComponentType, type SVGProps } from "react";
 import { GlowCard, GlowCardGrid } from "@/components/glow-card-grid";
-import { SectionEyebrow } from "@/components/ui/Section";
+import {
+  BikeIcon,
+  BuildingPavilionIcon,
+  CodeIcon,
+  FileTypographyIcon,
+  GiftIcon,
+  LayersSelectedIcon,
+} from "@/components/icons/ServiceIcons";
+import { ExternalSiteNoticeModal } from "@/components/ui/ExternalSiteNoticeModal";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
+
+type ServiceIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
 type ShowcaseCard = {
   name: string;
   handle: string;
   href: string;
-  Icon: LucideIcon;
+  Icon: ServiceIcon;
   glowColor: string;
-  /** Resting glow position so mobile shows a “hover” bloom in different corners */
+  externalUrl?: string;
   glowX: number;
   glowY: number;
 };
 
-/** Six home showcase cards — Event Management + Exhibition Stand combined. */
 const SERVICE_CARDS: ShowcaseCard[] = [
   {
     name: "Event Management & Exhibition Stands",
     handle:
       "End-to-end events plus custom stand design, build, and install across DWTC, ADNEC, Sharjah, and UAE venues.",
     href: "/services/exhibition-stand",
-    Icon: Box,
+    externalUrl: "https://exhibitionstandsuae.ae/",
+    Icon: BuildingPavilionIcon,
     glowColor: "#A78BFA",
     glowX: 0.7,
     glowY: -0.55,
@@ -41,7 +43,8 @@ const SERVICE_CARDS: ShowcaseCard[] = [
     handle:
       "Luxury and promotional gifts for clients, employees, and partners—curated, branded, and delivered UAE-wide.",
     href: "/services/corporate-gifts",
-    Icon: Gift,
+    externalUrl: "https://corporategiftsdubaii.ae/",
+    Icon: GiftIcon,
     glowColor: "#34D399",
     glowX: -0.65,
     glowY: 0.45,
@@ -51,7 +54,7 @@ const SERVICE_CARDS: ShowcaseCard[] = [
     handle:
       "In-house commercial and promotional printing—marketing materials, packaging, and large-format graphics.",
     href: "/services/printing",
-    Icon: Printer,
+    Icon: FileTypographyIcon,
     glowColor: "#FBBF24",
     glowX: 0.25,
     glowY: 0.7,
@@ -61,7 +64,8 @@ const SERVICE_CARDS: ShowcaseCard[] = [
     handle:
       "Websites, apps, UI/UX, and interactive kiosk experiences through Code Cobble.",
     href: "/services/creative-agency",
-    Icon: Laptop,
+    externalUrl: "https://codecobble.com/",
+    Icon: CodeIcon,
     glowColor: "#38BDF8",
     glowX: -0.55,
     glowY: -0.5,
@@ -71,7 +75,7 @@ const SERVICE_CARDS: ShowcaseCard[] = [
     handle:
       "Custom-branded rider kits and field equipment that put your logo in motion.",
     href: "/services/rider-equipment",
-    Icon: Bike,
+    Icon: BikeIcon,
     glowColor: "#FB923C",
     glowX: 0.6,
     glowY: 0.35,
@@ -81,7 +85,7 @@ const SERVICE_CARDS: ShowcaseCard[] = [
     handle:
       "Premium acrylic displays, signage, and joinery crafted in-house for retail and exhibitions.",
     href: "/services/acrylic-fabrication",
-    Icon: Layers,
+    Icon: LayersSelectedIcon,
     glowColor: "#F472B6",
     glowX: -0.3,
     glowY: -0.7,
@@ -89,6 +93,11 @@ const SERVICE_CARDS: ShowcaseCard[] = [
 ];
 
 export default function HomeServices() {
+  const [externalNotice, setExternalNotice] = useState<{
+    name: string;
+    url: string;
+  } | null>(null);
+
   return (
     <section id="services" className="w-full overflow-x-hidden bg-canvas">
       <RevealSection className="mx-auto max-w-7xl border-x border-hairline px-5 py-10 sm:px-6 sm:py-14 lg:py-6">
@@ -97,13 +106,12 @@ export default function HomeServices() {
           className="mb-8 grid grid-cols-1 gap-4 lg:mb-10 lg:grid-cols-12 lg:gap-8"
         >
           <div className="lg:col-span-5">
-            <SectionEyebrow icon={Layers}>Services</SectionEyebrow>
-            <h2 className="mt-4 text-pretty text-display-sm text-ink md:text-display-md">
+            <h2 className="text-pretty text-display-sm text-ink md:text-display-md">
               Explore Baharnani Services in Dubai for Every Business Need.
             </h2>
           </div>
 
-          <div className="flex items-start lg:col-span-7 lg:pt-11">
+          <div className="flex items-start lg:col-span-7">
             <p className="text-body-md text-muted lg:text-[17px] lg:leading-7">
               From exhibition stands and corporate gifts to printing, acrylic
               fabrication, rider equipment, event management, and creative
@@ -125,16 +133,33 @@ export default function HomeServices() {
                 key={card.name}
                 name={card.name}
                 handle={card.handle}
-                href={card.href}
+                href={card.externalUrl ? undefined : card.href}
+                onClick={
+                  card.externalUrl
+                    ? () =>
+                        setExternalNotice({
+                          name: card.name,
+                          url: card.externalUrl!,
+                        })
+                    : undefined
+                }
                 glowColor={card.glowColor}
                 glowX={card.glowX}
                 glowY={card.glowY}
-                icon={<card.Icon strokeWidth={2} />}
+                external={Boolean(card.externalUrl)}
+                icon={<card.Icon className="size-5" />}
               />
             ))}
           </GlowCardGrid>
         </Reveal>
       </RevealSection>
+
+      <ExternalSiteNoticeModal
+        open={Boolean(externalNotice)}
+        onClose={() => setExternalNotice(null)}
+        serviceName={externalNotice?.name ?? ""}
+        externalUrl={externalNotice?.url ?? ""}
+      />
     </section>
   );
 }

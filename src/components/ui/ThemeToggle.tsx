@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
+import { MoonIcon, SunIcon } from "@/components/icons/ThemeIcons";
 import { cn } from "@/lib/utils";
 
 type Theme = "light" | "dark";
@@ -9,6 +9,15 @@ type Theme = "light" | "dark";
 function getInitialTheme(): Theme {
   if (typeof document === "undefined") return "light";
   return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+
+function applyTheme(next: Theme) {
+  document.documentElement.classList.toggle("dark", next === "dark");
+  try {
+    localStorage.setItem("theme", next);
+  } catch {
+    /* ignore */
+  }
 }
 
 interface ThemeToggleProps {
@@ -28,15 +37,23 @@ export default function ThemeToggle({
     setMounted(true);
   }, []);
 
-  const toggle = () => {
+  const switchTheme = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";
     setTheme(next);
-    document.documentElement.classList.toggle("dark", next === "dark");
-    try {
-      localStorage.setItem("theme", next);
-    } catch {
-      /* ignore */
+    applyTheme(next);
+  };
+
+  const toggle = () => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion || !document.startViewTransition) {
+      switchTheme();
+      return;
     }
+
+    document.startViewTransition(switchTheme);
   };
 
   const isDark = theme === "dark";
@@ -52,13 +69,17 @@ export default function ThemeToggle({
         variant === "subtle"
           ? "h-9 w-9 rounded-full bg-transparent text-body hover:bg-surface-soft hover:text-ink"
           : "h-9 w-9 rounded-full bg-transparent text-ink hover:bg-surface-soft",
-        className
+        className,
       )}
     >
-      {mounted && isDark ? (
-        <Sun size={18} aria-hidden="true" />
+      {mounted ? (
+        isDark ? (
+          <SunIcon className="size-4" />
+        ) : (
+          <MoonIcon className="size-4" />
+        )
       ) : (
-        <Moon size={18} aria-hidden="true" />
+        <span className="size-4" aria-hidden />
       )}
     </button>
   );

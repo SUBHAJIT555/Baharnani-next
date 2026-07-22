@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import DottedMap from "dotted-map";
-import { MapPin } from "lucide-react";
+import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -71,7 +71,7 @@ export default function ContactWorldMap({ className }: { className?: string }) {
         >
           <div className="flex items-start gap-2.5">
             <span className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
-              <MapPin className="size-3.5" aria-hidden />
+              <EmojiIcon emoji={EMOJI.mapPin} className="text-sm" />
             </span>
             <div className="min-w-0">
               <p className="text-sm font-semibold text-ink">{SITE.name}</p>

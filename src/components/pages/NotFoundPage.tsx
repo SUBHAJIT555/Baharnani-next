@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Home, Layers, Mail, MapPin, Phone } from "lucide-react";
+import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
 import { AlertTriangleIcon } from "@/components/icons/AlertTriangleIcon";
 import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
 import {
@@ -45,7 +45,7 @@ export default function NotFoundPage() {
 
             <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
               <Link href="/" className={accentButtonClasses("group w-full sm:w-auto")}>
-                <Home className="size-3.5 shrink-0 opacity-90" aria-hidden />
+                <EmojiIcon emoji={EMOJI.home} className="text-sm opacity-90" />
                 Back to home
               </Link>
               <Link
@@ -67,7 +67,7 @@ export default function NotFoundPage() {
                     href={`mailto:${SITE.email}`}
                     className="inline-flex items-center gap-2.5 text-sm font-medium text-ink transition-colors hover:text-brand-accent"
                   >
-                    <Mail className="size-4 shrink-0 text-brand-accent" aria-hidden />
+                    <EmojiIcon emoji={EMOJI.mail} className="text-sm text-brand-accent" />
                     {SITE.email}
                   </a>
                 </li>
@@ -76,7 +76,7 @@ export default function NotFoundPage() {
                     href={`tel:${SITE.phone.replace(/\s/g, "")}`}
                     className="inline-flex items-center gap-2.5 text-sm font-medium text-ink transition-colors hover:text-brand-accent"
                   >
-                    <Phone className="size-4 shrink-0 text-brand-accent" aria-hidden />
+                    <EmojiIcon emoji={EMOJI.phone} className="text-sm text-brand-accent" />
                     {SITE.phone}
                   </a>
                 </li>
@@ -87,9 +87,9 @@ export default function NotFoundPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-start gap-2.5 text-sm font-medium text-ink transition-colors hover:text-brand-accent"
                   >
-                    <MapPin
-                      className="mt-0.5 size-4 shrink-0 text-brand-accent"
-                      aria-hidden
+                    <EmojiIcon
+                      emoji={EMOJI.mapPin}
+                      className="mt-0.5 text-sm text-brand-accent"
                     />
                     <span>
                       {SITE.name}
@@ -115,7 +115,7 @@ export default function NotFoundPage() {
               />
             </div>
             <p className="mt-4 flex items-center justify-center gap-1.5 text-center text-xs text-muted lg:justify-end">
-              <Layers className="size-3.5 text-brand-accent" aria-hidden />
+              <EmojiIcon emoji={EMOJI.layers} className="text-sm text-brand-accent" />
               Looking for production? Start with our services.
             </p>
           </div>

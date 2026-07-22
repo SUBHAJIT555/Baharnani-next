@@ -12,7 +12,7 @@ export function ClientLogo({ src, alt, className }: ClientLogoProps) {
   return (
     <div
       className={cn(
-        "relative flex aspect-4/3 h-full max-h-14 w-full items-center justify-center overflow-hidden bg-white shadow-sm ring ring-hairline sm:max-h-20 sm:shadow-md md:max-h-24",
+        "relative flex aspect-2/1 h-full max-h-16 w-full items-center justify-center overflow-hidden  p-2 sm:max-h-20 sm:p-3 md:max-h-24",
         className,
       )}
     >
@@ -21,7 +21,7 @@ export function ClientLogo({ src, alt, className }: ClientLogoProps) {
         alt={alt}
         fill
         loading="lazy"
-        className="object-cover"
+        className="object-contain"
         sizes="(max-width: 640px) 120px, 160px"
       />
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Quote, Star } from "lucide-react";
+import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -218,16 +218,13 @@ function StarRating({ rating = 5 }: { rating?: number }) {
       {Array.from({ length: 5 }, (_, i) => {
         const filled = i < Math.round(clamped);
         return (
-          <Star
+          <EmojiIcon
             key={i}
+            emoji={EMOJI.star}
             className={cn(
-              "h-3.5 w-3.5",
-              filled
-                ? "fill-amber-400 text-amber-400"
-                : "fill-transparent text-hairline",
+              "text-sm",
+              filled ? "opacity-100" : "opacity-25",
             )}
-            strokeWidth={1.75}
-            aria-hidden
           />
         );
       })}
@@ -272,10 +269,9 @@ function TestimonialsColumn({
                   transition: { type: "spring", stiffness: 360, damping: 24 },
                 }}
               >
-                <Quote
-                  className="absolute top-5 right-5 h-8 w-8 text-brand-accent/20"
-                  strokeWidth={1.75}
-                  aria-hidden
+                <EmojiIcon
+                  emoji={EMOJI.quote}
+                  className="absolute top-5 right-5 text-2xl text-brand-accent/20"
                 />
 
                 <StarRating rating={item.rating ?? 5} />
@@ -326,7 +322,7 @@ export function AnimatedTestimonials({
         className,
       )}
     >
-      <div className="flex max-h-[min(420px,55vh)] justify-center gap-6 overflow-hidden md:max-h-[740px]">
+      <div className="flex max-h-[min(420px,55vh)] justify-center gap-6 overflow-hidden md:max-h-185">
         <TestimonialsColumn
           items={mobileColumn}
           className="md:hidden"

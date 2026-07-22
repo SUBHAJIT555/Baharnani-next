@@ -2,23 +2,34 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Box, Laptop, Printer, Sparkles } from "lucide-react";
 import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
+import {
+  BuildingWarehouseIcon,
+  Settings2Icon,
+  TruckDeliveryIcon,
+  type ServiceIconComponent,
+} from "@/components/icons/ServiceIcons";
 import {
   softButtonClasses,
   buttonIconClasses,
 } from "@/components/ui/button";
 import PastelIconBox from "@/components/ui/PastelIconBox";
 import RequestQuoteButton from "@/components/ui/RequestQuoteButton";
-import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 
-const PATHWAYS = [
+const PATHWAYS: {
+  title: string;
+  description: string;
+  Icon: ServiceIconComponent;
+  color: string;
+  panelLight: string;
+  panelDark: string;
+}[] = [
   {
     title: "In-house production",
     description:
       "Fabrication, print, and finishing on-site—tighter quality control and faster turnarounds.",
-    Icon: Printer,
+    Icon: BuildingWarehouseIcon,
     color: "#FFF8E1",
     panelLight: `
       radial-gradient(ellipse 90% 75% at 12% 12%, rgba(255, 236, 160, 0.45), transparent 70%),
@@ -32,10 +43,10 @@ const PATHWAYS = [
     `,
   },
   {
-    title: "Dedicated microsites",
+    title: "Dedicated team",
     description:
-      "Deep dives for stands, gifts, and creative—via exhibitionstandsuae, corporategiftsdubaii, and Code Cobble.",
-    Icon: Laptop,
+      "Work with a focused Baharnani team throughout your project for seamless support, responsive communication, and expert guidance across every stage.",
+    Icon: Settings2Icon,
     color: "#E0F7FA",
     panelLight: `
       radial-gradient(ellipse 90% 75% at 12% 12%, rgba(160, 230, 245, 0.4), transparent 70%),
@@ -52,7 +63,7 @@ const PATHWAYS = [
     title: "Venue-ready delivery",
     description:
       "Install and coordination for DWTC, ADNEC, Expo Centre Sharjah, and corporate sites.",
-    Icon: Box,
+    Icon: TruckDeliveryIcon,
     color: "#C1D8FD",
     panelLight: `
       radial-gradient(ellipse 90% 75% at 12% 12%, rgba(160, 200, 255, 0.4), transparent 70%),
@@ -65,7 +76,7 @@ const PATHWAYS = [
       linear-gradient(165deg, #0c1018 0%, #10141c 50%, #0a0e14 100%)
     `,
   },
-] as const;
+];
 
 export default function HomeWhyBaharnani() {
   return (
@@ -90,8 +101,7 @@ export default function HomeWhyBaharnani() {
           animationNum={0}
           className="relative z-10 mx-auto max-w-2xl text-center"
         >
-          <SectionEyebrow icon={Sparkles}>Why Baharnani</SectionEyebrow>
-          <h2 className="mt-5 text-pretty text-display-sm text-ink md:text-display-md">
+          <h2 className="text-pretty text-display-sm text-ink md:text-display-md">
             Strategy and production under one roof.
           </h2>
           <p className="mt-4 text-body-md leading-relaxed text-muted sm:text-[17px] sm:leading-7">
@@ -124,7 +134,7 @@ export default function HomeWhyBaharnani() {
               />
               <div className="relative z-10">
                 <PastelIconBox color={item.color} size="md">
-                  <item.Icon className="h-5 w-5" strokeWidth={2} />
+                  <item.Icon className="size-5" />
                 </PastelIconBox>
                 <p className="mt-5 text-title-md font-semibold text-ink">
                   {item.title}

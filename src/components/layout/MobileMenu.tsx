@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { ChevronDown, ChevronUp, Mail, X } from "lucide-react";
+import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
+import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons/ChevronIcon";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import BrandLogo from "@/components/ui/BrandLogo";
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
@@ -129,7 +130,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   aria-label="Close menu"
                   className="rounded-lg p-2 text-ink transition-colors hover:bg-surface-soft"
                 >
-                  <X className="h-6 w-6" />
+                  <EmojiIcon emoji={EMOJI.x} className="text-xl" />
                 </button>
               </div>
 
@@ -155,9 +156,9 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                           >
                             <span>{item.name}</span>
                             {servicesOpen ? (
-                              <ChevronUp className="h-5 w-5 shrink-0 text-muted" />
+                              <ChevronUpIcon className="size-4 text-muted" />
                             ) : (
-                              <ChevronDown className="h-5 w-5 shrink-0 text-muted" />
+                              <ChevronDownIcon className="size-4 text-muted" />
                             )}
                           </motion.button>
 
@@ -295,7 +296,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   href={`mailto:${SITE.email}`}
                   className="mb-4 flex items-center justify-center gap-2 text-sm text-muted transition-colors hover:text-ink"
                 >
-                  <Mail className="h-4 w-4 shrink-0" />
+                  <EmojiIcon emoji={EMOJI.mail} className="text-sm" />
                   {SITE.email}
                 </a>
 

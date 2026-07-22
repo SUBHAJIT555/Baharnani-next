@@ -1,58 +1,47 @@
 "use client";
 
 import type { ReactNode } from "react";
-import type { LucideIcon } from "lucide-react";
-import {
-  Box,
-  Clock3,
-  Factory,
-  Gift,
-  MapPinned,
-  Printer,
-  Sparkles,
-  Users,
-} from "lucide-react";
-import { SectionEyebrow } from "@/components/ui/Section";
+import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { cn } from "@/lib/utils";
 
-type ListItem = { text: string; Icon: LucideIcon };
+type ListItem = { text: string; emoji: string };
 
 const PRODUCTION_ITEMS: ListItem[] = [
   {
     text: "Exhibition stands designed, fabricated, and installed in-house",
-    Icon: Box,
+    emoji: EMOJI.box,
   },
   {
     text: "Commercial print, packaging, and large-format graphics under one roof",
-    Icon: Printer,
+    emoji: EMOJI.printer,
   },
   {
     text: "Acrylic displays, joinery, and branded fabrication to spec",
-    Icon: Factory,
+    emoji: "🏭",
   },
   {
     text: "Corporate gifts curated, branded, and delivered UAE-wide",
-    Icon: Gift,
+    emoji: EMOJI.gift,
   },
 ];
 
 const DELIVERY_ITEMS: ListItem[] = [
   {
     text: "Venue-ready installs at DWTC, ADNEC, Expo Centre, and corporate sites",
-    Icon: MapPinned,
+    emoji: EMOJI.mapPin,
   },
   {
     text: "One accountable team from brief to show-floor and dismantle",
-    Icon: Users,
+    emoji: "👥",
   },
   {
     text: "Tight timelines with colour control and shared artwork standards",
-    Icon: Clock3,
+    emoji: EMOJI.clock,
   },
   {
     text: "Strategy plus production—so branding stays consistent across every touchpoint",
-    Icon: Sparkles,
+    emoji: EMOJI.sparkles,
   },
 ];
 
@@ -204,7 +193,7 @@ function TopicCard({
                 featured ? "text-blue-400" : "text-brand-accent",
               )}
             >
-              <item.Icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2} />
+              <EmojiIcon emoji={item.emoji} className="text-lg sm:text-xl" />
             </span>
             <span
               className={cn(
@@ -241,8 +230,7 @@ export default function ServicesWhyUs() {
     <section id="why-us" className="w-full scroll-mt-24 bg-canvas">
       <RevealSection className="mx-auto max-w-7xl border-x border-hairline px-5 py-6 sm:px-6 md:py-6 lg:px-8">
         <Reveal animationNum={0}>
-          <SectionEyebrow icon={Sparkles}>Why Baharnani</SectionEyebrow>
-          <h2 className="mt-4 max-w-3xl text-pretty text-display-sm text-ink md:text-display-md">
+          <h2 className="max-w-3xl text-pretty text-display-sm text-ink md:text-display-md">
             Why brands choose Baharnani for production in Dubai
           </h2>
         </Reveal>

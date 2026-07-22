@@ -3,20 +3,11 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
-import type { LucideIcon } from "lucide-react";
+import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
 import {
-  Bike,
-  Box,
-  CalendarDays,
-  CircleEllipsis,
-  Gamepad2,
-  Gift,
-  Laptop,
-  Layers,
-  Printer,
-  Smartphone,
-  X,
-} from "lucide-react";
+  SERVICE_ICONS,
+  type ServiceIconComponent,
+} from "@/components/icons/ServiceIcons";
 import { accentButtonClasses } from "@/components/ui/button";
 import { QUOTE_SERVICE_OPTIONS } from "@/lib/quote-services";
 import { cn } from "@/lib/utils";
@@ -26,17 +17,10 @@ const PANEL_TRANSITION = {
   ease: [0.22, 1, 0.36, 1] as const,
 };
 
-const SERVICE_ICONS: Record<string, LucideIcon> = {
-  "exhibition-stand": Box,
-  "corporate-gifts": Gift,
-  printing: Printer,
-  "rider-equipment": Bike,
-  "acrylic-fabrication": Layers,
-  "event-management": CalendarDays,
-  "website-development": Laptop,
-  "mobile-app-development": Smartphone,
-  "exhibition-kiosk": Gamepad2,
-  other: CircleEllipsis,
+const SERVICE_FALLBACK_EMOJIS: Record<string, string> = {
+  "mobile-app-development": "📱",
+  "exhibition-kiosk": "🎮",
+  other: "⋯",
 };
 
 const fieldClass = cn(
@@ -240,7 +224,7 @@ export default function QuoteRequestModal({
                     className="rounded-lg p-1.5 text-muted transition-colors hover:bg-canvas hover:text-ink dark:hover:bg-surface-soft"
                     aria-label="Close"
                   >
-                    <X className="h-5 w-5" />
+                    <EmojiIcon emoji={EMOJI.x} className="text-lg" />
                   </button>
                 </div>
 
@@ -352,8 +336,10 @@ export default function QuoteRequestModal({
                       <div className="flex flex-col gap-0.5">
                         {QUOTE_SERVICE_OPTIONS.map((service) => {
                           const checked = form.services.includes(service.id);
-                          const Icon =
-                            SERVICE_ICONS[service.id] ?? CircleEllipsis;
+                          const ServiceIcon: ServiceIconComponent | undefined =
+                            SERVICE_ICONS[service.id];
+                          const fallbackEmoji =
+                            SERVICE_FALLBACK_EMOJIS[service.id] ?? "⋯";
                           return (
                             <label
                               key={service.id}
@@ -380,15 +366,26 @@ export default function QuoteRequestModal({
                                     "bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3.5%208.5%206.5%2011.5%2012.5%204.5%22%2F%3E%3C%2Fsvg%3E')] bg-center bg-no-repeat",
                                 )}
                               />
-                              <Icon
-                                className={cn(
-                                  "mt-0.5 h-4 w-4 shrink-0 text-body transition-colors",
-                                  checked
-                                    ? "text-brand-accent"
-                                    : "group-hover/item:text-brand-accent",
-                                )}
-                                strokeWidth={2}
-                              />
+                              {ServiceIcon ? (
+                                <ServiceIcon
+                                  className={cn(
+                                    "mt-0.5 size-4 shrink-0 text-body transition-colors",
+                                    checked
+                                      ? "text-brand-accent"
+                                      : "group-hover/item:text-brand-accent",
+                                  )}
+                                />
+                              ) : (
+                                <EmojiIcon
+                                  emoji={fallbackEmoji}
+                                  className={cn(
+                                    "mt-0.5 text-sm text-body transition-colors",
+                                    checked
+                                      ? "text-brand-accent"
+                                      : "group-hover/item:text-brand-accent",
+                                  )}
+                                />
+                              )}
                               <span
                                 className={cn(
                                   "min-w-0 text-sm font-semibold transition-colors",

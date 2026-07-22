@@ -1,8 +1,6 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
 import { RatingBadge } from "@/components/ui/RatingBadge";
-import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { SITE } from "@/lib/site";
 
@@ -14,10 +12,9 @@ export default function AboutSection() {
           <Reveal
             animationNum={0}
             as="article"
-            className="px-5 py-10 sm:px-6 md:col-span-2 md:px-8 md:py-14"
+            className="px-5 py-6 sm:px-6 md:col-span-2 md:px-8 md:py-6"
           >
-            <SectionEyebrow icon={Sparkles}>About Baharnani</SectionEyebrow>
-            <h2 className="mt-5 text-pretty text-display-sm text-ink md:text-display-md">
+            <h2 className="text-pretty text-display-sm text-ink md:text-display-md">
               Where Creativity Meets Innovation in Advertising
             </h2>
 

@@ -2,34 +2,16 @@
 
 import type { HTMLAttributes } from "react";
 import Image from "next/image";
+import { EMOJI } from "@/components/icons/EmojiIcon";
 import {
-  Bike,
-  Box,
-  CalendarDays,
-  Cylinder,
-  Droplets,
-  Flame,
-  Gem,
-  Hand,
-  HardHat,
-  Layers,
-  PersonStanding,
-  Presentation,
-  Printer,
-  Rocket,
-  Shield,
-  ShieldCheck,
-  Shirt,
-  ShoppingBag,
-  Sparkles,
-  Sun,
-  Type,
-  Users,
-  type LucideIcon,
-} from "lucide-react";
+  BikeIcon,
+  BuildingPavilionIcon,
+  FileTypographyIcon,
+  LayersSelectedIcon,
+  type ServiceIconComponent,
+} from "@/components/icons/ServiceIcons";
 import { CheckItemText } from "@/components/ui/CheckItemText";
 import { FeaturedIcon } from "@/components/ui/FeaturedIcon";
-import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import type {
   ServiceOfferingIcon,
@@ -37,29 +19,32 @@ import type {
 } from "@/lib/service-pages";
 import { cn } from "@/lib/utils";
 
-const OFFERING_ICONS: Record<ServiceOfferingIcon, LucideIcon> = {
-  printer: Printer,
-  shirt: Shirt,
-  layers: Layers,
-  cylinder: Cylinder,
-  flame: Flame,
-  droplets: Droplets,
-  sun: Sun,
-  gem: Gem,
-  box: Box,
-  bike: Bike,
-  calendar: CalendarDays,
-  sparkles: Sparkles,
-  hardhat: HardHat,
-  hand: Hand,
-  shield: Shield,
-  "shield-check": ShieldCheck,
-  bag: ShoppingBag,
-  uniform: PersonStanding,
-  presentation: Presentation,
-  rocket: Rocket,
-  users: Users,
-  type: Type,
+const OFFERING_ICONS: Record<
+  ServiceOfferingIcon,
+  ServiceIconComponent | string
+> = {
+  printer: FileTypographyIcon,
+  shirt: "👕",
+  layers: LayersSelectedIcon,
+  cylinder: "🛢️",
+  flame: "🔥",
+  droplets: "💧",
+  sun: EMOJI.sun,
+  gem: "💎",
+  box: BuildingPavilionIcon,
+  bike: BikeIcon,
+  calendar: BuildingPavilionIcon,
+  sparkles: EMOJI.sparkles,
+  hardhat: "⛑️",
+  hand: "✋",
+  shield: EMOJI.shield,
+  "shield-check": EMOJI.shield,
+  bag: "👜",
+  uniform: "👔",
+  presentation: "📊",
+  rocket: "🚀",
+  users: "👥",
+  type: "🔤",
 };
 
 function AlternateImageMockup({
@@ -96,8 +81,7 @@ export default function ServiceOfferings({ content }: ServiceOfferingsProps) {
           animationNum={0}
           className="mx-auto flex max-w-3xl flex-col items-center text-center"
         >
-          <SectionEyebrow icon={Layers}>{content.eyebrow}</SectionEyebrow>
-          <h2 className="mt-5 text-pretty text-display-sm text-ink md:text-display-md">
+          <h2 className="text-pretty text-display-sm text-ink md:text-display-md">
             {content.title}
           </h2>
           {content.description ? (
@@ -109,7 +93,7 @@ export default function ServiceOfferings({ content }: ServiceOfferingsProps) {
 
         <div className="mt-12 flex flex-col gap-12 sm:mt-16 sm:gap-16 md:mt-20 md:gap-20 lg:gap-24">
           {content.items.map((item, index) => {
-            const Icon = OFFERING_ICONS[item.icon];
+            const icon = OFFERING_ICONS[item.icon];
             const imageOnLeft = index % 2 === 1;
 
             return (
@@ -125,7 +109,7 @@ export default function ServiceOfferings({ content }: ServiceOfferingsProps) {
                   )}
                 >
                   <FeaturedIcon
-                    icon={Icon}
+                    icon={icon}
                     size="lg"
                     color="brand"
                     theme="modern-neue"

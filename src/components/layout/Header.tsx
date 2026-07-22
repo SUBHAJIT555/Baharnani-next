@@ -1,15 +1,7 @@
 "use client";
 
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
-import {
-  Bike,
-  Box,
-  CalendarDays,
-  Gift,
-  Laptop,
-  Layers,
-  Printer,
-} from "lucide-react";
+import { getServiceIcon } from "@/components/icons/ServiceIcons";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -43,34 +35,25 @@ const MENU_ITEMS: MenuItem[] = [
   { key: 4, name: "Blogs", href: "/blog" },
 ];
 
-const SERVICE_META: Record<
-  string,
-  { Icon: typeof Laptop; color: string }
-> = {
-  "event-management": { Icon: CalendarDays, color: "#FFD6F8" },
-  "corporate-gifts": { Icon: Gift, color: "#B6E9C8" },
-  printing: { Icon: Printer, color: "#FFF8E1" },
-  "creative-agency": { Icon: Laptop, color: "#E0F7FA" },
-  "rider-equipment": { Icon: Bike, color: "#FFECB3" },
-  "acrylic-fabrication": { Icon: Layers, color: "#C1D8FD" },
-  "exhibition-stand": { Icon: Box, color: "#EDE7F6" },
+const SERVICE_COLORS: Record<string, string> = {
+  "event-management": "#FFD6F8",
+  "corporate-gifts": "#B6E9C8",
+  printing: "#FFF8E1",
+  "creative-agency": "#E0F7FA",
+  "rider-equipment": "#FFECB3",
+  "acrylic-fabrication": "#C1D8FD",
+  "exhibition-stand": "#EDE7F6",
 };
 
-const NAV_SERVICES: NavServiceItem[] = SERVICES.map((service) => {
-  const meta = SERVICE_META[service.slug] ?? {
-    Icon: Box,
-    color: "#C1D8FD",
-  };
-  return {
-    id: service.slug,
-    title: service.title,
-    link: service.href,
-    description: service.description,
-    iconColor: meta.color,
-    Icon: meta.Icon,
-    externalUrl: service.externalUrl,
-  };
-});
+const NAV_SERVICES: NavServiceItem[] = SERVICES.map((service) => ({
+  id: service.slug,
+  title: service.title,
+  link: service.href,
+  description: service.description,
+  iconColor: SERVICE_COLORS[service.slug] ?? "#C1D8FD",
+  Icon: getServiceIcon(service.slug),
+  externalUrl: service.externalUrl,
+}));
 
 const linkClassName =
   "inline-flex items-center rounded-lg px-3.5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-surface-soft";

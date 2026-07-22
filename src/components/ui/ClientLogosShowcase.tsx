@@ -1,25 +1,17 @@
 "use client";
 
-import { Building2 } from "lucide-react";
 import { ClientLogo } from "@/components/ui/ClientLogo";
 import { LogosCarousel } from "@/components/ui/logos-carousel";
-import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 
-export const CLIENT_LOGOS = [
-  { src: "/images/clients/fab.webp", alt: "FAB", name: "FAB" },
-  { src: "/images/clients/himalaya.webp", alt: "Himalaya", name: "Himalaya" },
-  { src: "/images/clients/talabat.webp", alt: "Talabat", name: "Talabat" },
-  { src: "/images/clients/careem.webp", alt: "Careem", name: "Careem" },
-  { src: "/images/clients/imperial.webp", alt: "Imperial", name: "Imperial" },
-  { src: "/images/clients/rently.webp", alt: "Rently", name: "Rently" },
-  { src: "/images/clients/rit.webp", alt: "RIT", name: "RIT" },
-  {
-    src: "/images/clients/tradeling.webp",
-    alt: "Tradeling",
-    name: "Tradeling",
-  },
-] as const;
+export const CLIENT_LOGOS = Array.from({ length: 30 }, (_, index) => {
+  const logoNumber = String(index + 1).padStart(2, "0");
+  return {
+    src: `/images/brandLogos/Logo-${logoNumber}.png`,
+    alt: `Brand logo ${logoNumber}`,
+    name: `Logo-${logoNumber}`,
+  };
+});
 
 type ClientLogosShowcaseProps = {
   /** Intro / supporting line under the heading (standalone) or as body (nested) */
@@ -82,22 +74,16 @@ export default function ClientLogosShowcase({
     <section className="w-full bg-canvas">
       <RevealSection className="mx-auto max-w-7xl border-x border-hairline px-5 py-10 sm:px-6 sm:py-12 md:px-8 md:py-14">
         <div className="mx-auto max-w-3xl text-center">
-          <Reveal animationNum={0}>
-            <SectionEyebrow icon={Building2} className="mx-auto">
-              Our clients
-            </SectionEyebrow>
-          </Reveal>
-
           <Reveal
-            animationNum={1}
+            animationNum={0}
             as="h2"
-            className="mt-5 text-balance text-display-sm text-ink md:text-display-md"
+            className="text-balance text-display-sm text-ink md:text-display-md"
           >
             Trusted by leading brands across the UAE
           </Reveal>
 
           <Reveal
-            animationNum={2}
+            animationNum={1}
             as="p"
             className="mt-4 text-body-md leading-relaxed text-muted sm:text-[17px] sm:leading-7"
           >
@@ -105,7 +91,7 @@ export default function ClientLogosShowcase({
           </Reveal>
         </div>
 
-        <Reveal animationNum={3} className="mt-8 sm:mt-10">
+        <Reveal animationNum={2} className="mt-8 sm:mt-10">
           <LogoRow />
         </Reveal>
       </RevealSection>

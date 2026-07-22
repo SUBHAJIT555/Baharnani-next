@@ -2,8 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Box, Gift, Laptop } from "lucide-react";
 import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
+import {
+  BuildingPavilionIcon,
+  CodeIcon,
+  GiftIcon,
+  type ServiceIconComponent,
+} from "@/components/icons/ServiceIcons";
 import {
   softButtonClasses,
   buttonIconClasses,
@@ -29,7 +34,7 @@ const HERO_SLIDES = [
     tabBlurb:
       "Custom exhibition stand design, build, and installation across the UAE.",
     externalUrl: "https://exhibitionstandsuae.ae/",
-    Icon: Box,
+    Icon: BuildingPavilionIcon,
     iconColor: "#C1D8FD",
     label: "Design | Build | Install",
     metric: "100+",
@@ -57,7 +62,7 @@ const HERO_SLIDES = [
     tabBlurb:
       "Custom, luxury, and promotional corporate gifts for Dubai & the UAE.",
     externalUrl: "https://corporategiftsdubaii.ae/",
-    Icon: Gift,
+    Icon: GiftIcon,
     iconColor: "#B6E9C8",
     label: "Custom | Luxury | Promotional",
     metric: "Bulk",
@@ -85,7 +90,7 @@ const HERO_SLIDES = [
     tabBlurb:
       "Website development, UI/UX, kiosk games, and digital solutions through Code Cobble.",
     externalUrl: "https://codecobble.com/",
-    Icon: Laptop,
+    Icon: CodeIcon,
     iconColor: "#FFF8E1",
     label: "Website | App | Kiosk Game",
     metric: "Full",
@@ -137,7 +142,7 @@ function FeatureTab({
 }: {
   title: string;
   blurb: string;
-  Icon: typeof Box;
+  Icon: ServiceIconComponent;
   isActive: boolean;
   progress: number;
   activeLightBg: string;
@@ -176,10 +181,9 @@ function FeatureTab({
 
       <Icon
         className={cn(
-          "relative z-1 h-5 w-5 shrink-0",
+          "relative z-1 size-5",
           isActive ? "text-ink" : "text-body",
         )}
-        strokeWidth={2}
       />
       <div
         className={cn(
@@ -301,7 +305,7 @@ export default function HomeHero() {
             <div className="flex flex-col justify-center py-7 sm:py-8">
               <div className="flex items-center gap-3">
                 <PastelIconBox color={activeSlide.iconColor} size="sm">
-                  <ActiveIcon className="h-4 w-4" strokeWidth={2} />
+                  <ActiveIcon className="size-5" />
                 </PastelIconBox>
                 <span className="text-caption font-medium text-muted ">
                   {activeSlide.label}

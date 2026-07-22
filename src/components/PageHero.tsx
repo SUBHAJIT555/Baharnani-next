@@ -2,26 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-  Bike,
-  Briefcase,
-  Building2,
-  CalendarDays,
-  Cookie,
-  FileText,
-  Layers,
-  Mail,
-  Newspaper,
-  Scale,
-  Shield,
-  Sparkles,
-  type LucideIcon,
-} from "lucide-react";
 import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
 import { MessageForwardIcon } from "@/components/icons/MessageForwardIcon";
 import { WhatsAppOutlineIcon } from "@/components/icons/WhatsAppIcon";
 import MagicRings from "@/components/ui/MagicRings";
-import { SectionEyebrow } from "@/components/ui/Section";
 import { useQuoteRequest } from "@/components/ui/QuoteRequestProvider";
 import {
   accentButtonClasses,
@@ -34,24 +18,21 @@ import {
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { cn } from "@/lib/utils";
 
-const ICONS = {
-  bike: Bike,
-  briefcase: Briefcase,
-  building: Building2,
-  calendar: CalendarDays,
-  cookie: Cookie,
-  file: FileText,
-  layers: Layers,
-  mail: Mail,
-  newspaper: Newspaper,
-  scale: Scale,
-  shield: Shield,
-  sparkles: Sparkles,
-} as const;
-
 const GRID_LINE = "color-mix(in srgb, var(--primary) 22%, transparent)";
 
-export type PageHeroIcon = keyof typeof ICONS;
+export type PageHeroIcon =
+  | "bike"
+  | "briefcase"
+  | "building"
+  | "calendar"
+  | "cookie"
+  | "file"
+  | "layers"
+  | "mail"
+  | "newspaper"
+  | "scale"
+  | "shield"
+  | "sparkles";
 
 export type PageHeroAction = {
   label: string;
@@ -65,7 +46,9 @@ export type PageHeroAction = {
 };
 
 export type PageHeroProps = {
+  /** @deprecated Eyebrow badges are no longer rendered. */
   eyebrow?: string;
+  /** @deprecated Eyebrow badges are no longer rendered. */
   eyebrowIcon?: PageHeroIcon;
   title: string;
   /** Highlighted word(s) in brand accent — shown inline after `title`. */
@@ -124,7 +107,7 @@ function PageHeroBackground() {
         opacity: 0.55,
         attenuation: 12,
         lineThickness: 1.4,
-        noiseAmount: 0.30,
+        noiseAmount: 0.3,
         ringCount: 6,
       }
     : {
@@ -239,8 +222,6 @@ function PageHeroActionLink({ action }: { action: PageHeroAction }) {
 }
 
 export function PageHero({
-  eyebrow,
-  eyebrowIcon,
   title,
   titleAccent,
   subtitle,
@@ -251,7 +232,6 @@ export function PageHero({
   compact = false,
   className,
 }: PageHeroProps) {
-  const Icon: LucideIcon | undefined = eyebrowIcon ? ICONS[eyebrowIcon] : undefined;
   const hasActions = primaryAction || secondaryAction || children;
 
   const paddingClass = compact
@@ -269,20 +249,8 @@ export function PageHero({
             paddingClass,
           )}
         >
-          {eyebrow ? (
-            <Reveal animationNum={0}>
-              <SectionEyebrow icon={Icon} className="mx-auto">
-                {eyebrow}
-              </SectionEyebrow>
-            </Reveal>
-          ) : null}
-
-          <Reveal
-            animationNum={eyebrow ? 1 : 0}
-            as="h1"
-            className={cn(eyebrow ? "mt-6" : undefined)}
-          >
-            <span className="mt-6 max-w-4xl text-balance text-display-xl text-ink">
+          <Reveal animationNum={0} as="h1">
+            <span className="max-w-4xl text-balance text-display-xl text-ink">
               {title}
               {titleAccent ? (
                 <>
@@ -300,7 +268,7 @@ export function PageHero({
 
           {description ? (
             <Reveal
-              animationNum={eyebrow ? 2 : 1}
+              animationNum={1}
               as="p"
               className="mx-auto mt-5 max-w-2xl text-body-md leading-relaxed text-muted sm:mt-6 sm:text-[17px] sm:leading-7"
             >
@@ -310,9 +278,7 @@ export function PageHero({
 
           {hasActions ? (
             <Reveal
-              animationNum={
-                eyebrow ? (description ? 3 : 2) : description ? 2 : 1
-              }
+              animationNum={description ? 2 : 1}
               className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
             >
               {primaryAction ? (

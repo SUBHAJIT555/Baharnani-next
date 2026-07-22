@@ -1,9 +1,8 @@
 "use client";
 
-import { Headphones, Mail, Phone } from "lucide-react";
+import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
 import { WhatsAppOutlineIcon } from "@/components/icons/WhatsAppIcon";
 import ContactWorldMap from "@/components/pages/contact/ContactWorldMap";
-import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -44,10 +43,9 @@ const CONTACT_CHANNELS: ContactChannel[] = [
 ];
 
 function ChannelIcon({ type }: { type: ContactChannel["icon"] }) {
-  const className = "size-4 text-brand-accent";
-  if (type === "whatsapp") return <WhatsAppOutlineIcon className={className} />;
-  if (type === "phone") return <Phone className={className} />;
-  return <Mail className={className} />;
+  if (type === "whatsapp") return <WhatsAppOutlineIcon className="size-4 text-brand-accent" />;
+  if (type === "phone") return <EmojiIcon emoji={EMOJI.phone} className="text-sm text-brand-accent" />;
+  return <EmojiIcon emoji={EMOJI.mail} className="text-sm text-brand-accent" />;
 }
 
 export default function ContactHero() {
@@ -70,22 +68,16 @@ export default function ContactHero() {
         />
 
         <div className="relative z-10 mx-auto max-w-3xl px-5 pt-24 pb-6 text-center sm:px-6 sm:pt-28 sm:pb-8 lg:pt-26">
-          <Reveal animationNum={0}>
-            <SectionEyebrow icon={Headphones} className="mx-auto">
-              Contact us
-            </SectionEyebrow>
-          </Reveal>
-
           <Reveal
-            animationNum={1}
+            animationNum={0}
             as="h1"
-            className="mt-6 text-balance text-display-xl text-ink"
+            className="text-balance text-display-xl text-ink"
           >
             We&apos;d love to hear from you
           </Reveal>
 
           <Reveal
-            animationNum={2}
+            animationNum={1}
             as="p"
             className="mx-auto mt-4 max-w-xl text-body-md leading-relaxed text-muted sm:text-[17px] sm:leading-7"
           >
@@ -93,7 +85,7 @@ export default function ContactHero() {
           </Reveal>
         </div>
 
-        <Reveal animationNum={3} className="relative z-10 px-4 sm:px-8 lg:px-12">
+        <Reveal animationNum={2} className="relative z-10 px-4 sm:px-8 lg:px-12">
           <ContactWorldMap className="py-2 sm:py-4" />
         </Reveal>
 
@@ -102,7 +94,7 @@ export default function ContactHero() {
             {CONTACT_CHANNELS.map((item, index) => (
               <Reveal
                 key={item.title}
-                animationNum={4 + index}
+                animationNum={3 + index}
                 className={cn(
                   "px-2 py-8 text-center sm:px-6 sm:py-2",
                   index > 0 &&

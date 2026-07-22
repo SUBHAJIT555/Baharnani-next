@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, type ReactNode } from "react";
+import { ArrowUpRightIcon } from "@/components/icons/ArrowUpRightIcon";
 import { cn } from "@/lib/utils";
 
 export type GlowCardGridProps = React.ComponentPropsWithoutRef<"div"> & {
@@ -123,6 +124,9 @@ export type GlowCardProps = {
   glowX?: number;
   glowY?: number;
   href?: string;
+  onClick?: () => void;
+  /** When true, corner cue reads as leaving the site */
+  external?: boolean;
   className?: string;
 };
 
@@ -135,16 +139,21 @@ export function GlowCard({
   glowX = 0.35,
   glowY = -0.25,
   href,
+  onClick,
+  external = false,
   className,
 }: GlowCardProps) {
+  const isInteractive = Boolean(href || onClick);
+  const cueLabel = external ? "Open site" : "Explore";
+
   const content = (
     <div
       data-slot="glow-card"
       data-glow-rest-x={glowX}
       data-glow-rest-y={glowY}
       className={cn(
-        "@container relative flex h-full min-h-52 w-full overflow-hidden rounded-(--card-radius) bg-canvas ring-1 ring-hairline transition-[translate,scale] select-none active:scale-[0.98]",
-        href && "cursor-pointer",
+        "@container relative flex h-full min-h-52 w-full overflow-hidden rounded-(--card-radius) bg-canvas ring-1 ring-hairline transition-[translate,scale,ring-color] select-none active:scale-[0.98]",
+        isInteractive && "cursor-pointer group-hover/card:ring-brand-accent/35",
         className,
       )}
       style={
@@ -189,16 +198,23 @@ export function GlowCard({
           )}
         </div>
 
-        <div className="z-1 flex flex-1 flex-col items-start justify-between gap-4 p-5 text-left sm:p-6">
+        <div className="z-1 flex flex-1 flex-col gap-5 p-5 text-left sm:p-6">
           <div
-            className="flex size-12 items-center justify-center rounded-full border border-hairline text-ink [&_svg]:size-5"
-            style={{
-              background: `color-mix(in srgb, ${glowColor} 28%, white)`,
-              borderColor: `color-mix(in srgb, ${glowColor} 35%, transparent)`,
-            }}
+            className={cn(
+              "flex size-12 shrink-0 items-center justify-center rounded-full border",
+              "[&_svg]:size-5 [&_svg]:stroke-[2.25]",
+            )}
+            style={
+              {
+                "--glow": glowColor,
+                background: "color-mix(in srgb, var(--glow) 36%, white)",
+                borderColor: "color-mix(in srgb, var(--glow) 42%, transparent)",
+              } as React.CSSProperties
+            }
           >
             {icon ? (
-              <span style={{ color: glowColor }}>{icon}</span>
+              /* Always dark stroke — badge bg stays a light pastel in both themes */
+              <span className="text-neutral-900">{icon}</span>
             ) : avatar ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -209,14 +225,39 @@ export function GlowCard({
             ) : null}
           </div>
 
-          <div className="flex flex-col gap-2">
-            <h3 className="text-title-md font-semibold leading-snug text-ink">
+          <div className="flex min-h-0 flex-1 flex-col gap-2">
+            <h3 className="text-title-md font-semibold leading-snug text-ink transition-colors duration-300 group-hover/card:text-brand-accent">
               {name}
             </h3>
             {handle ? (
               <p className="text-body-sm leading-relaxed text-muted">{handle}</p>
             ) : null}
           </div>
+
+          {/* In-flow CTA — always visible, never overlaps copy */}
+          {isInteractive ? (
+            <div
+              className={cn(
+                "mt-auto inline-flex w-fit items-center gap-1.5 rounded-full border border-dashed border-brand-accent/40 bg-canvas/80 py-1.5 pr-1.5 pl-3",
+                "text-xs font-semibold tracking-wide text-brand-accent",
+                "transition-[background-color,border-color,color,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                "group-hover/card:border-solid group-hover/card:border-brand-accent group-hover/card:bg-brand-accent group-hover/card:text-white",
+                "group-hover/card:shadow-[0_8px_20px_-12px_rgba(59,130,246,0.65)]",
+                "group-focus-visible/card:border-solid group-focus-visible/card:border-brand-accent group-focus-visible/card:bg-brand-accent group-focus-visible/card:text-white",
+              )}
+            >
+              <span>{cueLabel}</span>
+              <span
+                className={cn(
+                  "flex size-6 items-center justify-center rounded-full bg-brand-accent/10",
+                  "transition-colors duration-300",
+                  "group-hover/card:bg-white/20 group-focus-visible/card:bg-white/20",
+                )}
+              >
+                <ArrowUpRightIcon className="size-3.5" />
+              </span>
+            </div>
+          ) : null}
         </div>
       </div>
 
@@ -243,9 +284,24 @@ export function GlowCard({
 
   if (href) {
     return (
-      <Link href={href} className="block h-full outline-none">
+      <Link
+        href={href}
+        className="group/card block h-full outline-none focus-visible:rounded-(--card-radius)"
+      >
         {content}
       </Link>
+    );
+  }
+
+  if (onClick) {
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        className="group/card block h-full w-full text-left outline-none focus-visible:rounded-(--card-radius)"
+      >
+        {content}
+      </button>
     );
   }
 

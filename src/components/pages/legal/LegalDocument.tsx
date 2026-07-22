@@ -1,10 +1,7 @@
-import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { Scale } from "lucide-react";
 
 import {
-  SectionEyebrow,
   sectionInnerClass,
   sectionOuterClass,
 } from "@/components/ui/Section";
@@ -16,8 +13,6 @@ type LegalDocumentProps = {
   title: string;
   description?: string;
   updated?: string;
-  eyebrow?: string;
-  eyebrowIcon?: LucideIcon;
   children: ReactNode;
 };
 
@@ -25,8 +20,6 @@ export function LegalDocument({
   title,
   description,
   updated,
-  eyebrow = "Legal",
-  eyebrowIcon: EyebrowIcon = Scale,
   children,
 }: LegalDocumentProps) {
   return (
@@ -44,8 +37,7 @@ export function LegalDocument({
             className="flex flex-col gap-6  pb-10 sm:flex-row sm:items-end sm:justify-between sm:gap-10 sm:pb-12"
           >
             <div className="min-w-0 max-w-3xl">
-              <SectionEyebrow icon={EyebrowIcon}>{eyebrow}</SectionEyebrow>
-              <h1 className="mt-5 text-display-sm font-semibold tracking-tight text-ink sm:text-display-md">
+              <h1 className="text-display-sm font-semibold tracking-tight text-ink sm:text-display-md">
                 {title}
               </h1>
               {description ? (

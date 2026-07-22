@@ -1,8 +1,6 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { Sparkles } from "lucide-react";
-import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -182,10 +180,7 @@ export default function AboutStats() {
 
         <div className="relative z-10 px-5 py-12 sm:px-6 sm:py-14 md:px-8 md:py-16">
           <Reveal animationNum={0} className="mx-auto max-w-2xl text-center">
-            <SectionEyebrow icon={Sparkles} className="mx-auto">
-              By the numbers
-            </SectionEyebrow>
-            <h2 className="mt-5 text-pretty text-display-sm text-ink md:text-display-md">
+            <h2 className="text-pretty text-display-sm text-ink md:text-display-md">
               Results that speak for our craft.
             </h2>
             <p className="mt-4 text-body-md text-muted sm:text-[17px] sm:leading-7">

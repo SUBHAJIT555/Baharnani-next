@@ -1,4 +1,5 @@
-import type { LucideIcon } from "lucide-react";
+import type { ReactNode } from "react";
+import { EmojiIcon } from "@/components/icons/EmojiIcon";
 import { cn } from "@/lib/utils";
 
 /** Outer section fill — full-bleed canvas */
@@ -22,26 +23,30 @@ export const sectionEyebrowClass = cn(
 );
 
 type SectionEyebrowProps = {
-  children: React.ReactNode;
-  icon?: LucideIcon;
+  children: ReactNode;
+  icon?: ReactNode;
   className?: string;
 };
 
 export function SectionEyebrow({
   children,
-  icon: Icon,
+  icon,
   className,
 }: SectionEyebrowProps) {
   return (
     <span className={cn(sectionEyebrowClass, className)}>
-      {Icon ? <Icon className="h-3.5 w-3.5 text-brand-accent" /> : null}
+      {typeof icon === "string" ? (
+        <EmojiIcon emoji={icon} className="text-sm text-brand-accent" />
+      ) : icon ? (
+        <span className="inline-flex text-sm text-brand-accent">{icon}</span>
+      ) : null}
       {children}
     </span>
   );
 }
 
 type SectionShellProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   innerClassName?: string;
   compact?: boolean;

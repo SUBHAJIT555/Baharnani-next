@@ -1,10 +1,10 @@
 "use client";
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { LucideIcon } from "lucide-react";
-import { ChevronDown, ChevronUp } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
+import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons/ChevronIcon";
+import { type ServiceIconComponent } from "@/components/icons/ServiceIcons";
 import { ExternalSiteNoticeModal } from "@/components/ui/ExternalSiteNoticeModal";
 import { cn } from "@/lib/utils";
 
@@ -14,7 +14,7 @@ export type NavServiceItem = {
   link: string;
   description?: string;
   iconColor: string;
-  Icon: LucideIcon;
+  Icon: ServiceIconComponent;
   externalUrl?: string;
 };
 
@@ -148,9 +148,9 @@ const ServicesDropdown = memo(function ServicesDropdown({
         {label}
         <span className="pointer-events-none text-muted">
           {isOpen ? (
-            <ChevronUp className="h-3.5 w-3.5" />
+            <ChevronUpIcon className="size-3.5" />
           ) : (
-            <ChevronDown className="h-3.5 w-3.5" />
+            <ChevronDownIcon className="size-3.5" />
           )}
         </span>
       </button>
@@ -189,8 +189,7 @@ const ServicesDropdown = memo(function ServicesDropdown({
                       >
                         <span className="flex items-start gap-2.5 px-1.5">
                           <service.Icon
-                            className="mt-0.5 h-4 w-4 shrink-0 text-body transition-colors group-hover/item:text-brand-accent"
-                            strokeWidth={2}
+                            className="mt-0.5 size-4 shrink-0 text-body transition-colors group-hover/item:text-brand-accent"
                           />
                           <span className="min-w-0">
                             <span className="block text-sm font-semibold text-ink transition-colors group-hover/item:text-brand-accent">
@@ -213,8 +212,7 @@ const ServicesDropdown = memo(function ServicesDropdown({
                       >
                         <span className="flex items-start gap-2.5 px-1.5">
                           <service.Icon
-                            className="mt-0.5 h-4 w-4 shrink-0 text-body transition-colors group-hover/item:text-brand-accent"
-                            strokeWidth={2}
+                            className="mt-0.5 size-4 shrink-0 text-body transition-colors group-hover/item:text-brand-accent"
                           />
                           <span className="min-w-0">
                             <span className="block text-sm font-semibold text-ink transition-colors group-hover/item:text-brand-accent">

@@ -1,11 +1,9 @@
 "use client";
 
-import { MessageSquareQuote } from "lucide-react";
 import {
   AnimatedTestimonials,
   type Testimonial,
 } from "@/components/ui/AnimatedTestimonials";
-import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 
 const TESTIMONIALS: Testimonial[] = [
@@ -50,15 +48,12 @@ export default function HomeTestimonials() {
           className="mb-8 grid grid-cols-1 gap-4 lg:mb-10 lg:grid-cols-12 lg:gap-8"
         >
           <div className="lg:col-span-5">
-            <SectionEyebrow icon={MessageSquareQuote}>
-              Testimonials
-            </SectionEyebrow>
-            <h2 className="mt-4 text-pretty text-display-sm text-ink md:text-display-md">
+            <h2 className="text-pretty text-display-sm text-ink md:text-display-md">
               What UAE brands say about working with Baharnani.
             </h2>
           </div>
 
-          <div className="flex items-start lg:col-span-7 lg:pt-11">
+          <div className="flex items-start lg:col-span-7">
             <p className="text-body-md text-muted lg:text-[17px] lg:leading-7">
               From exhibition stands and corporate gifting to print and
               on-site install, clients across Dubai and the UAE rely on us for

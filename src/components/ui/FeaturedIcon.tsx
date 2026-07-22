@@ -1,5 +1,6 @@
 import type { ComponentType, ReactNode, Ref, SVGProps } from "react";
 import { isValidElement } from "react";
+import { EmojiIcon } from "@/components/icons/EmojiIcon";
 import { cn } from "@/lib/utils";
 
 const iconClassBySize = {
@@ -7,6 +8,13 @@ const iconClassBySize = {
   md: "size-5",
   lg: "size-6",
   xl: "size-7",
+} as const;
+
+const emojiClassBySize = {
+  sm: "text-sm",
+  md: "text-base",
+  lg: "text-lg",
+  xl: "text-xl",
 } as const;
 
 const styles = {
@@ -110,6 +118,12 @@ export function FeaturedIcon({
       )}
       {...otherProps}
     >
+      {typeof Icon === "string" ? (
+        <EmojiIcon
+          emoji={Icon}
+          className={cn("relative z-10", emojiClassBySize[size])}
+        />
+      ) : null}
       {isIconComponent(Icon) ? (
         <Icon
           aria-hidden

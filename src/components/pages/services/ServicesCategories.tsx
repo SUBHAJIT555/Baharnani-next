@@ -3,22 +3,20 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import type { LucideIcon } from "lucide-react";
 import {
-  Bike,
-  Box,
-  CalendarDays,
-  Gift,
-  Laptop,
-  Layers,
-  Printer,
-} from "lucide-react";
+  BikeIcon,
+  BuildingPavilionIcon,
+  CodeIcon,
+  FileTypographyIcon,
+  GiftIcon,
+  LayersSelectedIcon,
+  type ServiceIconComponent,
+} from "@/components/icons/ServiceIcons";
 import {
   accentButtonClasses,
   buttonIconClasses,
 } from "@/components/ui/button";
 import { ExternalSiteNoticeModal } from "@/components/ui/ExternalSiteNoticeModal";
-import { SectionEyebrow } from "@/components/ui/Section";
 import { Reveal, RevealSection } from "@/components/ui/timeline-animation";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +27,7 @@ type ServiceCategory = {
   paragraph: ReactNode;
   points: string[];
   image: string;
-  Icon: LucideIcon;
+  Icon: ServiceIconComponent;
   externalUrl?: string;
 };
 
@@ -63,7 +61,7 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
       "Full on-site install, technical support during the show, and clean dismantle",
     ],
     image: "/images/about/production.webp",
-    Icon: Box,
+    Icon: BuildingPavilionIcon,
     externalUrl: "https://exhibitionstandsuae.ae/",
   },
   {
@@ -86,7 +84,7 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
       "Bulk ordering, gift packaging, and scheduled UAE-wide delivery",
     ],
     image: "/images/about/gifting.webp",
-    Icon: Gift,
+    Icon: GiftIcon,
     externalUrl: "https://corporategiftsdubaii.ae/",
   },
   {
@@ -109,7 +107,7 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
       "Performance, accessibility, and launch support after go-live",
     ],
     image: "/images/HomePage/brand-deal.svg",
-    Icon: Laptop,
+    Icon: CodeIcon,
     externalUrl: "https://codecobble.com/",
   },
   {
@@ -132,7 +130,7 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
       "Colour proofs, finishing options, and quality checks before every delivery",
     ],
     image: "/images/about/production.webp",
-    Icon: Printer,
+    Icon: FileTypographyIcon,
   },
   {
     slug: "rider-equipment",
@@ -153,7 +151,7 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
       "Logo placement, colour matching, and volume production for fleets",
     ],
     image: "/images/about/gifting.webp",
-    Icon: Bike,
+    Icon: BikeIcon,
   },
   {
     slug: "acrylic-fabrication",
@@ -174,7 +172,7 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
       "CNC cutting, polishing, lighting integration, and site install",
     ],
     image: "/images/about/production.webp",
-    Icon: Layers,
+    Icon: LayersSelectedIcon,
   },
   {
     slug: "event-management",
@@ -195,7 +193,7 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
       "On-site direction, staffing, and a single point of contact through close",
     ],
     image: "/images/about/gifting.webp",
-    Icon: CalendarDays,
+    Icon: BuildingPavilionIcon,
   },
 ];
 
@@ -326,8 +324,7 @@ export default function ServicesCategories() {
             className="grid grid-cols-1 gap-4"
           >
             <div>
-              <SectionEyebrow icon={Layers}>Service categories</SectionEyebrow>
-              <h2 className="mt-4 text-pretty text-display-sm text-ink">
+              <h2 className="text-pretty text-display-sm text-ink">
                 Everything your brand needs—designed, built, and delivered in Dubai.
               </h2>
             </div>
@@ -358,7 +355,7 @@ export default function ServicesCategories() {
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-hairline bg-canvas text-ink shadow-sm">
-                      <step.Icon className="h-4 w-4" strokeWidth={2} />
+                      <step.Icon className="size-4" />
                     </span>
                     <h3 className="text-title-md text-ink">{step.heading}</h3>
                   </div>
@@ -398,13 +395,12 @@ export default function ServicesCategories() {
             className="mb-14 grid grid-cols-1 gap-6 lg:mb-16 lg:grid-cols-12 lg:gap-10"
           >
             <div className="lg:col-span-5">
-              <SectionEyebrow icon={Layers}>Service categories</SectionEyebrow>
-              <h2 className="mt-4 text-pretty text-display-sm text-ink md:text-display-md">
+              <h2 className="text-pretty text-display-sm text-ink md:text-display-md">
                 Everything your brand needs - designed, built, and delivered in
                 Dubai.
               </h2>
             </div>
-            <div className="flex items-start lg:col-span-7 lg:pt-11">
+            <div className="flex items-start lg:col-span-7">
               <p className="text-body-md text-muted sm:text-[17px] sm:leading-7">
                 Exhibition stands, corporate gifts, printing, acrylic
                 fabrication, rider equipment, event management, and digital
@@ -435,7 +431,7 @@ export default function ServicesCategories() {
                             : "border-hairline bg-canvas",
                         )}
                       >
-                        <step.Icon className="h-4 w-4" strokeWidth={2} />
+                        <step.Icon className="size-4" />
                       </span>
                       <div className="flex min-w-0 flex-col">
                         <span className="text-title-md text-ink lg:text-title-lg">

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUpRight, X } from "lucide-react";
+import { EmojiIcon, EMOJI } from "@/components/icons/EmojiIcon";
 import {
   accentButtonClasses,
   softButtonClasses,
@@ -97,7 +97,7 @@ export function ExternalSiteNoticeModal({
                   className="absolute top-4 right-4 rounded-lg p-1.5 text-muted transition-colors hover:bg-canvas hover:text-ink dark:hover:bg-surface-soft"
                   aria-label="Close"
                 >
-                  <X className="h-5 w-5" />
+                  <EmojiIcon emoji={EMOJI.x} className="text-lg" />
                 </button>
 
                 <div className="mb-4 flex items-center justify-center gap-2">
@@ -142,7 +142,7 @@ export function ExternalSiteNoticeModal({
                     className={accentButtonClasses("group w-full sm:flex-1")}
                   >
                     Continue
-                    <ArrowUpRight className="h-3.5 w-3.5 opacity-80" />
+                    <EmojiIcon emoji={EMOJI.arrowUpRight} className="text-sm opacity-80" />
                   </button>
                 </div>
               </div>

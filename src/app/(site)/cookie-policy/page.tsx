@@ -1,5 +1,3 @@
-import { Cookie } from "lucide-react";
-
 import { LegalDocument } from "@/components/pages/legal/LegalDocument";
 import {
   COOKIE_UPDATED,
@@ -16,8 +14,6 @@ export const metadata = pageMetadata(
 export default function CookiePolicyPage() {
   return (
     <LegalDocument
-      eyebrow="Legal"
-      eyebrowIcon={Cookie}
       title="Cookie Policy"
       description={`This Cookie Policy explains how ${SITE.name} uses cookies and similar tracking technologies on our Website.`}
       updated={COOKIE_UPDATED}
